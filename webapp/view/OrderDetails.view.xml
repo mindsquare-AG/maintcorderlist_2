@@ -1,0 +1,74 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="com.app.mindsquare.maintcorderlist.controller.OrderDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<!-- Header: Id -->
+			<Page title="{i18n>detailsTitle} {AUFNR}" showNavButton="true" navButtonPress="fnNavBack" titleAlignment="Center">
+				<content>
+					<f:SimpleForm id="header_data" editable="true" emptySpanL="3" labelSpanL="3" emptySpanM="3" labelSpanM="3" layout="ResponsiveGridLayout">
+						<f:content>
+							<!-- Auftragskurztext -->
+							<Label text="{i18n>master.shortText}"/>
+							<Input value="{AUFTXT}"/>
+							<!-- Rückmeldenummer -->
+							<Label text="{i18n>master.rueckNr}"/>
+							<Input value="{Ruecknr}"/>
+							<!-- Auftragsstatus -->
+							<Label text="{i18n>master.status}"/>
+							<Input value="{Status}" editable="false"/>
+							<!-- Auftragsart -->
+							<Label text="{i18n>master.auart}"/>
+							<Input value="{AUART}" editable="false"/>
+							<!-- Techn. Platz SUCHHILFE -->
+							<Label text="{i18n>master.techPl}"/>
+							<Input value=" "/>
+							<!-- Equipment SUCHHILFE -->
+							<Label text="{i18n>master.equip}"/>
+							<Input value=" "/>
+							<!-- Verantw. Arbeitsplatz SUCHHILFE -->
+							<Label text="{i18n>master.Vaplz}"/>
+							<Input id="vaplzInput" value="{Vaplz}" valueHelpRequest="onValueHelpVaplzPress" showValueHelp="true" maxLength="80" valueHelpOnly="true"/>
+							<!-- Wartungsplan -->
+							<Label text="{i18n>master.wartPl}"/>
+							<Input value="{Warpl}" editable="false"/>
+							<!-- Wartungsposition -->
+							<Label text="{i18n>master.wartPos}"/>
+							<Input value="{Wapos}" editable="false"/>
+							<!-- Plangruppe & Plangruppenzähler -->
+							<Label text="{i18n>master.planGrPlanGrZ}"/>
+							<Input value="{Plnnr} {Plnal}" editable="false"/>
+							<!-- IH-Leistungsart SUCHHILFE -->
+							<Label text="{i18n>master.ila}"/>
+							<Input id="ilaInput" value="{Ila}" valueHelpRequest="onValueHelpIlaPress" showValueHelp="true" maxLength="80" valueHelpOnly="true"/>
+							<!-- Standort & Betriebsbereich -->
+							<Label text="{i18n>master.standort}"/>
+							<Input value="{Standort} {Beber}" editable="false"/>
+						</f:content>
+					</f:SimpleForm>
+					<IconTabBar id="idIconTabBarInlineMode" headerMode="Inline" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter text="{i18n>master.vNr}" key="info">
+								<List items="{ path: '/OrderSet' }">
+									<StandardListItem title="{VORNR}"/>
+								</List>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>master.vKurztext}" key="info">
+								<List items="{ path: '/OrderSet' }">
+									<StandardListItem title="{VORTXT}"/>
+								</List>
+							</IconTabFilter>
+							<IconTabFilter text="Zeit buchen" key="info" press="aa"></IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button type="Accept" icon="sap-icon://save" text="Auftrag abschließen" press="fnOnSaveButtonPressed" id="btn_Save"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

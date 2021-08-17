@@ -1,9 +1,59 @@
-<mvc:View controllerName="com.app.mindsquare.maintcorderlist.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:l="sap.ui.layout.form"
+	xmlns:g="sap.ui.layout" xmlns:rl="sap.ui.vk" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:uni="sap.ui.unified"
+	controllerName="com.app.mindsquare.maintcorderlist.controller.App" displayBlock="true">
+	<Shell appWidthLimited="false">
 		<App id="app">
 			<pages>
 				<Page title="{i18n>title}" titleAlignment="Center">
-					<content></content>
+					<content>
+						<!-- use this to make the table occupy the available screen height -->
+						<VBox fitContainer="true">
+							<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="OrderSet" persistencyKey="SmartFilter_Explored">
+								<smartFilterBar:controlConfiguration>
+									<smartFilterBar:ControlConfiguration key="Status" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration id="orderFilter" key="AUFNR" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="AUART" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Tplnr" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Equnr" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Vaplz" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="START_DATE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="END_DATE" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="AUFTXT" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Warpl" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Wapos" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Plnnr" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Plnal" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Ila" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Betriebsbereich" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Standort" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Plgrp" visibleInAdvancedArea="true"/>
+									<smartFilterBar:ControlConfiguration key="Ruecknr" visibleInAdvancedArea="true"/>
+								</smartFilterBar:controlConfiguration>
+							</smartFilterBar:SmartFilterBar>
+							<smartTable:SmartTable id="LineItemsSmartTable" header="{i18n>master.order}" entitySet="OrderSet" smartFilterId="smartFilterBar"
+								tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true"
+								enableAutoColumnWidth="true" showRowCount="true" enableAutoBinding="true" persistencyKey="SmartTableAnalytical_Explored"
+								initiallyVisibleFields="AUFNR,AUART,AUFTXT,Status,Tplnr,Equnr,Vaplz,START_DATE,END_DATE,Warpl,Wapos,Plnnr,Plnal,Ila,Betriebsbereich,Standort,Plgrp,Ruecknr">
+								<Table>
+									<items>
+										<ColumnListItem type="Navigation" press="fnOnItemPressed"/>
+									</items>
+								</Table>
+								<!-- layout data used to make the table growing but the filter bar fixed -->
+								<smartTable:layoutData>
+									<FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</VBox>
+					</content>
+					<!-- Barcode Scanner -->
+					<footer>
+						<Bar>
+							<contentRight>
+								<Button icon="sap-icon://bar-code" type="Emphasized" press="onBtnScanPress"/>
+							</contentRight>
+						</Bar>
+					</footer>
 				</Page>
 			</pages>
 		</App>

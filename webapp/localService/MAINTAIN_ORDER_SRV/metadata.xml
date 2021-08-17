@@ -1,0 +1,177 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MIND2_MAINTAIN_ORDER_SRV" xml:lang="de" sap:schema-version="1">
+			<EntityType Name="Order" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AUFTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AUART" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="AUART_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PRIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="START_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="END_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="TPLNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PLTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="EQKTX" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><NavigationProperty Name="GetDetails" Relationship="MIND2_MAINTAIN_ORDER_SRV.OrderToDetail" FromRole="FromRole_OrderToDetail"
+					ToRole="ToRole_OrderToDetail"/><NavigationProperty Name="GetChecklists" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetChecklists" FromRole="FromRole_GetChecklists"
+					ToRole="ToRole_GetChecklists"/><NavigationProperty Name="GetImages" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetImages" FromRole="FromRole_GetImages"
+					ToRole="ToRole_GetImages"/><NavigationProperty Name="GetUserSet" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetUserSet" FromRole="FromRole_GetUserSet"
+					ToRole="ToRole_GetUserSet"/><NavigationProperty Name="navChecklistCategorySet" Relationship="MIND2_MAINTAIN_ORDER_SRV.Order_ChecklistCategory"
+					FromRole="FromRole_Order_ChecklistCategory" ToRole="ToRole_Order_ChecklistCategory"/></EntityType>
+			<EntityType Name="OrderDetail" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AUFTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DMG_PIC_GRP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DMG_PIC_GRP_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DMG_PIC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DMG_PIC_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="URTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_URTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="LTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_LTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="WORK_DONE" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_URTXT_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_LTXT_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HAS_DMG_PIC" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="GetCatalogePictures" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogePictures"
+					FromRole="FromRole_GetCatalogePictures" ToRole="ToRole_GetCatalogePictures"/><NavigationProperty Name="GetCatalogeCodes" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogeCodes" FromRole="FromRole_GetCatalogeCodes"
+					ToRole="ToRole_GetCatalogeCodes"/></EntityType>
+			<EntityType Name="Checklist" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/><PropertyRef Name="UVORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UVORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORKTX" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_VORTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DONE" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="INADEQUATE" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OK" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_VORTXT_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CatalogCodes" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/><PropertyRef Name="DAMAGE"/><PropertyRef Name="DAMAGE_PIC"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DAMAGE" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false"/><Property Name="DAMAGE_PIC" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"/><Property Name="DAMAGE_PICGRP" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false"/><Property Name="DAMAGE_PICGRPTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="CatalogPictures" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/><PropertyRef Name="DAMAGE_PICGRP"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DAMAGE_PICGRP" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false"/><Property Name="DAMAGE_PICGRPTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="UserInfo" sap:content-version="1">
+				<Key><PropertyRef Name="NAME"/><PropertyRef Name="UNAME"/></Key><Property Name="NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Images" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MimeType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="UserSet" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/><PropertyRef Name="PERNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PERNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="SELECTED" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ChecklistCategory" sap:content-version="1">
+				<Key><PropertyRef Name="Rubrik"/><PropertyRef Name="Abschnitt"/><PropertyRef Name="Aufnr"/><PropertyRef Name="Vornr"/></Key><Property Name="Rubrik" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Abschnitt" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Title" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Nummer" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NumTotal" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NumDone" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Vornr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="navOrder" Relationship="MIND2_MAINTAIN_ORDER_SRV.Order_ChecklistCategory"
+					FromRole="ToRole_Order_ChecklistCategory" ToRole="FromRole_Order_ChecklistCategory"/></EntityType>
+			<Association Name="GetCatalogePictures" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" Multiplicity="1" Role="FromRole_GetCatalogePictures"/><End Type="MIND2_MAINTAIN_ORDER_SRV.CatalogPictures" Multiplicity="*" Role="ToRole_GetCatalogePictures"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_GetCatalogePictures"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetCatalogePictures"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="GetCatalogeCodes" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" Multiplicity="1" Role="FromRole_GetCatalogeCodes"/><End Type="MIND2_MAINTAIN_ORDER_SRV.CatalogCodes" Multiplicity="*" Role="ToRole_GetCatalogeCodes"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_GetCatalogeCodes"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetCatalogeCodes"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="GetChecklists" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetChecklists"/><End Type="MIND2_MAINTAIN_ORDER_SRV.Checklist" Multiplicity="*" Role="ToRole_GetChecklists"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_GetChecklists"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Principal>
+					<Dependent Role="ToRole_GetChecklists"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="GetImages" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetImages"/><End Type="MIND2_MAINTAIN_ORDER_SRV.Images" Multiplicity="*" Role="ToRole_GetImages"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_GetImages"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Principal>
+					<Dependent Role="ToRole_GetImages"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="GetUserSet" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetUserSet"/><End Type="MIND2_MAINTAIN_ORDER_SRV.UserSet" Multiplicity="*" Role="ToRole_GetUserSet"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_GetUserSet"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetUserSet"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Order_ChecklistCategory" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_Order_ChecklistCategory"/><End Type="MIND2_MAINTAIN_ORDER_SRV.ChecklistCategory" Multiplicity="*" Role="ToRole_Order_ChecklistCategory"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Order_ChecklistCategory"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_Order_ChecklistCategory"><PropertyRef Name="Vornr"/><PropertyRef Name="Aufnr"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="OrderToDetail" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_OrderToDetail"/><End Type="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" Multiplicity="1" Role="ToRole_OrderToDetail"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_OrderToDetail"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_OrderToDetail"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="MIND2_MAINTAIN_ORDER_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="OrderSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Order" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="OrderDetailSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ChecklistSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Checklist" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CatalogCodesSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.CatalogCodes" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CatalogPicturesSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.CatalogPictures" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="UserInfoSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.UserInfo" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ImagesSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Images" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="UserSetSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.UserSet" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ChecklistCategorySet" EntityType="MIND2_MAINTAIN_ORDER_SRV.ChecklistCategory" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="GetImagesSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetImages" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_GetImages"/><End EntitySet="ImagesSet" Role="ToRole_GetImages"/></AssociationSet>
+				<AssociationSet Name="Order_ChecklistCategorySet" Association="MIND2_MAINTAIN_ORDER_SRV.Order_ChecklistCategory" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_Order_ChecklistCategory"/><End EntitySet="ChecklistCategorySet" Role="ToRole_Order_ChecklistCategory"/></AssociationSet>
+				<AssociationSet Name="GetCatalogePicturesSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetCatalogePictures" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="OrderDetailSet" Role="FromRole_GetCatalogePictures"/><End EntitySet="CatalogPicturesSet" Role="ToRole_GetCatalogePictures"/></AssociationSet>
+				<AssociationSet Name="GetCatalogeCodesSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetCatalogeCodes" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="OrderDetailSet" Role="FromRole_GetCatalogeCodes"/><End EntitySet="CatalogCodesSet" Role="ToRole_GetCatalogeCodes"/></AssociationSet>
+				<AssociationSet Name="OrderToDetailSet" Association="MIND2_MAINTAIN_ORDER_SRV.OrderToDetail" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_OrderToDetail"/><End EntitySet="OrderDetailSet" Role="ToRole_OrderToDetail"/></AssociationSet>
+				<AssociationSet Name="GetChecklistsSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetChecklists" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_GetChecklists"/><End EntitySet="ChecklistSet" Role="ToRole_GetChecklists"/></AssociationSet>
+				<AssociationSet Name="GetUserSetSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetUserSet" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_GetUserSet"/><End EntitySet="UserSetSet" Role="ToRole_GetUserSet"/></AssociationSet>
+				<FunctionImport Name="CloseOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
+				<FunctionImport Name="RejectOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/></FunctionImport>
+				<FunctionImport Name="AssignOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

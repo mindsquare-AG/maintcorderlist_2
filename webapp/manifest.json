@@ -10,11 +10,19 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"MAINTAIN_ORDER_SRV": {
+				"uri": "/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/MAINTAIN_ORDER_SRV/metadata.xml"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -31,7 +39,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -58,6 +65,16 @@
 				"settings": {
 					"bundleName": "com.app.mindsquare.maintcorderlist.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "MAINTAIN_ORDER_SRV",
+				"preload": true
 			}
 		},
 		"resources": {
@@ -79,14 +96,23 @@
 				"name": "RouteApp",
 				"pattern": "RouteApp",
 				"target": ["TargetApp"]
+			}, {
+				"name": "OrderDetails",
+				"pattern": "{oCtx}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["OrderDetails"]
 			}],
 			"targets": {
 				"TargetApp": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "App",
 					"viewName": "App"
+				},
+				"OrderDetails": {
+					"viewType": "XML",
+					"viewName": "OrderDetails"
 				}
 			}
 		}
