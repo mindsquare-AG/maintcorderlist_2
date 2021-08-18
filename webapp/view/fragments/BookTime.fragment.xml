@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" id="BookTime" fragmentName="my.BookTime" xmlns:f="sap.ui.layout.form">
+	<Dialog id="BookTime_Dialog" class="sapUiPopupWithPadding" contentHeight="80%"
+		contentWidth="{= (${device>/system/phone} || (${device>/system/tablet} &amp;&amp; ${device>/orientation/portrait})) ? '90%' : '40%'}">
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title id="BookTime_Dialog_Title" text="{i18n>master.bookTime}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button press="onBookTimeClose" tooltip="schließen" icon="sap-icon://decline"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<f:SimpleForm editable="true" emptySpanL="3" labelSpanL="3" emptySpanM="3" labelSpanM="3" layout="ResponsiveGridLayout">
+			<f:content>
+				<HBox alignItems="Center" justifyContent="Center">
+					<Text renderWhitespace="true" text="Stunden"/>
+					<Switch id="switchBooking" state="false" change="onSwitchBookingTimeOrDate" customTextOn=" " customTextOff=" "/>
+					<Text renderWhitespace="true" text="Zeiten"/>
+				</HBox>
+				<Label/>
+				<TimePicker id="timePickerHours" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
+					visible="true"/>
+				<Label id="lblRange1" text="von" visible="false"/>
+				<TimePicker id="timePickerRange1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"/>
+				<Label id="lblRange2" text="bis" visible="false"/>
+				<TimePicker id="timePickerRange2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"/>
+				<!-- Rückmeldetext -->
+				<Label text="{i18n>master.rText}"/>
+				<Input value=""/>
+				<!-- Endrückmeldung -->
+				<Label/>
+				<CheckBox text="{i18n>master.endR}" selected="{ path : 'Breakdown', type : 'sap.ui.model.type.Boolean' , formatter: '.formatBoolean' }"/>
+				<!-- Arbeitsplatz -->
+				<Label text="{i18n>master.arbpl}"/>
+				<Select id="dropDownPriority" forceSelection="false" items="{ path: '/PrioritiesSet'}" selectedKey="{Priority}">
+					<core:Item text="{Name}" key="{Id}"/>
+				</Select>
+				<!-- Leistungsart -->
+				<Label text="{i18n>master.lArt}"/>
+				<Select forceSelection="false" items="{ path: '/PrioritiesSet'}" selectedKey="{Priority}">
+					<core:Item text="{Name}" key="{Id}"/>
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="Abbrechen" press="onBookTimeClose"/>
+			<Button type="Emphasized" text="{i18n>master.bookTime}" press="onWorkOrderSavePressed"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+<!-- -->
+<!--	<Text renderWhitespace="true" text="Von-bis-Zeit"/>-->

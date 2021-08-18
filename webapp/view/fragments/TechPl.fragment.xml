@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" id="TechPl" fragmentName="my.TechPl">
+	<Dialog id="TechPl_Dialog" class="sapUiPopupWithPadding" contentHeight="80%"
+		contentWidth="{= (${device>/system/phone} || (${device>/system/tablet} &amp;&amp; ${device>/orientation/portrait})) ? '90%' : '40%'}">
+		<customHeader>
+			<Bar>
+				<!--
+				<contentLeft>
+					<Button id="backButtonIla" press="onValueHelpIlaBack" icon="sap-icon://nav-back" visible="false"/>
+				</contentLeft> -->
+				<contentMiddle>
+					<Title id="TechPl_Dialog_Title" text="{i18n>master.techPl}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button press="onValueHelpTechPlClose" tooltip="schließen" icon="sap-icon://decline"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<List id="techPlList" growingThreshold="25" updateFinished="onUpdateFinishedTechPl" items="{path: '/OrderSet'}">
+			<StandardListItem id="listTemplateTechpl" title="{TPLNR} " press="onSelectCause"/>
+		</List>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,8 +1,8 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="com.app.mindsquare.maintcorderlist.controller.OrderDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	controllerName="com.app.mindsquare.maintcorderlist.controller.OrderDetails" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<App>
 		<pages>
-			<!-- Header: Id -->
 			<Page title="{i18n>detailsTitle} {AUFNR}" showNavButton="true" navButtonPress="fnNavBack" titleAlignment="Center">
 				<content>
 					<f:SimpleForm id="header_data" editable="true" emptySpanL="3" labelSpanL="3" emptySpanM="3" labelSpanM="3" layout="ResponsiveGridLayout">
@@ -18,16 +18,28 @@
 							<Input value="{Status}" editable="false"/>
 							<!-- Auftragsart -->
 							<Label text="{i18n>master.auart}"/>
-							<Input value="{AUART}" editable="false"/>
-							<!-- Techn. Platz SUCHHILFE -->
-							<Label text="{i18n>master.techPl}"/>
-							<Input value=" "/>
-							<!-- Equipment SUCHHILFE -->
-							<Label text="{i18n>master.equip}"/>
-							<Input value=" "/>
-							<!-- Verantw. Arbeitsplatz SUCHHILFE -->
+							<Input value="{AUART} {AUFTXT}" editable="false"/>
+							<!-- Techn. Platz oder Equipment SUCHHILFE-->
+							<Label text="{i18n>master.techPlEquip}"/>
+							<Input id="fieldTechObj" showValueHelp="true" valueHelpRequest="valueHelp" value="{TPLNR}" cd:functionalLocationSelectionAllowed="true"
+								cd:equipmentSelectionAllowed="true" cd:functionalLocationsWithDisabledInstallationSelectionAllowed="true" cd:idPropertyName="/TECHOBJ"
+								cd:descriptionPropertyName="/TECHOBJDESC" cd:propertyModel="notificationHelper"
+								cd:parentFunctionalLocationIdPropertyName="/Item1ParentFunctionalLocationId"
+								cd:parentFunctionalLocationDescriptionPropertyName="/Item1ParentFunctionalLocationDescription" cd:isEquipmentPropertyName="/IsEquipment"/>
+							<!-- Functional Location / Equipment Description -->
+							<Label text=" {i18n>master.field.technicalObjectDescription}"/>
+							<Input editable="false" value="{notificationHelper>/TECHOBJDESC}"/>
+							<!-- Id and description of functional location the equipment is equipped in -->
+							<Label text="{i18n>Item1ParentLabel}" visible="{= ${notificationHelper>/IsEquipment} === true}"/>
+							<Input editable="false" value="{notificationHelper>/Item1ParentFunctionalLocationId}"
+								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
+							<Input editable="false" value="{notificationHelper>/Item1ParentFunctionalLocationDescription}"
+								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
+							<!-- Verantw. Arbeitsplatz DROPDOWN NOCH NICHT RICHTIG-->
 							<Label text="{i18n>master.Vaplz}"/>
-							<Input id="vaplzInput" value="{Vaplz}" valueHelpRequest="onValueHelpVaplzPress" showValueHelp="true" maxLength="80" valueHelpOnly="true"/>
+							<Select id="dropDownVaplz" forceSelection="false" items="{ path: '/UserStatusSet'}" selectedKey="{Vaplz}">
+								<core:ListItem text="{generalServices>Txt30}" additionalText="{generalServices>Txt04}" key="{generalServices>Estat}"/>
+							</Select>
 							<!-- Wartungsplan -->
 							<Label text="{i18n>master.wartPl}"/>
 							<Input value="{Warpl}" editable="false"/>
@@ -37,9 +49,11 @@
 							<!-- Plangruppe & Plangruppenzähler -->
 							<Label text="{i18n>master.planGrPlanGrZ}"/>
 							<Input value="{Plnnr} {Plnal}" editable="false"/>
-							<!-- IH-Leistungsart SUCHHILFE -->
+							<!-- IH-Leistungsart DROPDOWN -->
 							<Label text="{i18n>master.ila}"/>
-							<Input id="ilaInput" value="{Ila}" valueHelpRequest="onValueHelpIlaPress" showValueHelp="true" maxLength="80" valueHelpOnly="true"/>
+							<Select id="dropDownIla" forceSelection="false" items="{ path: '/UserStatusSet'}" selectedKey="{Ila}">
+								<core:ListItem text="{generalServices>Txt30}" additionalText="{generalServices>Txt04}" key="{generalServices>Estat}"/>
+							</Select>
 							<!-- Standort & Betriebsbereich -->
 							<Label text="{i18n>master.standort}"/>
 							<Input value="{Standort} {Beber}" editable="false"/>
@@ -47,17 +61,34 @@
 					</f:SimpleForm>
 					<IconTabBar id="idIconTabBarInlineMode" headerMode="Inline" class="sapUiResponsiveContentPadding">
 						<items>
-							<IconTabFilter text="{i18n>master.vNr}" key="info">
-								<List items="{ path: '/OrderSet' }">
-									<StandardListItem title="{VORNR}"/>
-								</List>
+							<IconTabFilter text="{i18n>master.posDaten}" key="info">
+								<Table noDataText="No Data">
+									<items>
+										<ColumnListItem counter="0">
+											<cells>
+												<ObjectIdentifier text="{VORNR}"></ObjectIdentifier>
+												<Text text="{VORTXT}"></Text>
+												<HBox>
+													<Button text="{i18n>master.bookTime}" icon="sap-icon://create-entry-time" press="onBookTime"/>
+												</HBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+									<columns>
+										<Column>
+											<header>
+												<Text text="Vorgangsnr." maxLines="0"></Text>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Text text="Vorgangstext" maxLines="0"></Text>
+											</header>
+										</Column>
+										<Column></Column>
+									</columns>
+								</Table>
 							</IconTabFilter>
-							<IconTabFilter text="{i18n>master.vKurztext}" key="info">
-								<List items="{ path: '/OrderSet' }">
-									<StandardListItem title="{VORTXT}"/>
-								</List>
-							</IconTabFilter>
-							<IconTabFilter text="Zeit buchen" key="info" press="aa"></IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>

@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" id="Equip" fragmentName="my.Equip">
+	<Dialog id="Equip_Dialog" class="sapUiPopupWithPadding" contentHeight="80%"
+		contentWidth="{= (${device>/system/phone} || (${device>/system/tablet} &amp;&amp; ${device>/orientation/portrait})) ? '90%' : '40%'}">
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title id="Equip_Dialog_Title" text="{i18n>master.equip}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button press="onValueHelpEquipClose" tooltip="schließen" icon="sap-icon://decline"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+	</Dialog>
+</core:FragmentDefinition>
