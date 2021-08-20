@@ -1,0 +1,48 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MIND2_PM_GENERAL_SRV" xml:lang="de" sap:schema-version="1">
+			<EntityType Name="CatalogCodeGroup" sap:content-version="1">
+				<Key><PropertyRef Name="Katalog"/><PropertyRef Name="Codegruppe"/><PropertyRef Name="Sprache"/></Key><Property Name="Katalog" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Katalog" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Codegruppe" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Codegruppe"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Sprache" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sprache" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Kurztext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Bezeichnung"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Qmart" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Meldungsart" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Tplnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Techn. Platz" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Rbnr" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Berichtsschema" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="navToCode" Relationship="MIND2_PM_GENERAL_SRV.CatalogGroupCode" FromRole="FromRole_CatalogGroupCode"
+					ToRole="ToRole_CatalogGroupCode"/></EntityType>
+			<EntityType Name="CatalogCode" sap:content-version="1">
+				<Key><PropertyRef Name="Katalog"/><PropertyRef Name="Codegruppe"/><PropertyRef Name="Code"/><PropertyRef Name="Sprache"/></Key><Property Name="Katalog" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Katalog" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Codegruppe" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Codegruppe"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Code" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Sprache" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sprache" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Kurztext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Bezeichnung"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Qmart" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Meldungsart" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Tplnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Techn. Platz" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Rbnr" Type="Edm.String" Nullable="false" MaxLength="9" sap:unicode="false" sap:label="Berichtsschema" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="WorkOrderType" sap:content-version="1">
+				<Key><PropertyRef Name="Auart"/></Key><Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Auftragsart"/><Property Name="Tplnr" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Technischer Platz"/><Property Name="Qmart" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Meldungsart"/><Property Name="Bezei" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Auftragsart"/></EntityType>
+			<EntityType Name="MaintenanceActivityType" sap:content-version="1">
+				<Key><PropertyRef Name="Ilart"/></Key><Property Name="Tplnr" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Technischer Platz"/><Property Name="Qmart" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Meldungsart"/><Property Name="Ilart" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="IH-Leistungsart"/><Property Name="Ilatx" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="ILA-Bezeichg"/></EntityType>
+			<EntityType Name="UserStatus" sap:content-version="1">
+				<Key><PropertyRef Name="Stsma"/><PropertyRef Name="Estat"/></Key><Property Name="Stsma" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Statusschema"/><Property Name="Estat" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="AnwendStatus"/><Property Name="Txt04" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Status"/><Property Name="Txt30" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Status"/></EntityType>
+			<Association Name="CatalogGroupCode" sap:content-version="1"><End Type="MIND2_PM_GENERAL_SRV.CatalogCodeGroup" Multiplicity="0..1" Role="FromRole_CatalogGroupCode"/><End Type="MIND2_PM_GENERAL_SRV.CatalogCode" Multiplicity="*" Role="ToRole_CatalogGroupCode"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_CatalogGroupCode"><PropertyRef Name="Katalog"/><PropertyRef Name="Codegruppe"/><PropertyRef Name="Sprache"/></Principal>
+					<Dependent Role="ToRole_CatalogGroupCode"><PropertyRef Name="Katalog"/><PropertyRef Name="Codegruppe"/><PropertyRef Name="Sprache"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="MIND2_PM_GENERAL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="CatalogCodeGroupSet" EntityType="MIND2_PM_GENERAL_SRV.CatalogCodeGroup" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="CatalogCodeSet" EntityType="MIND2_PM_GENERAL_SRV.CatalogCode" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="WorkOrderTypeSet" EntityType="MIND2_PM_GENERAL_SRV.WorkOrderType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="MaintenanceActivityTypeSet" EntityType="MIND2_PM_GENERAL_SRV.MaintenanceActivityType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="UserStatusSet" EntityType="MIND2_PM_GENERAL_SRV.UserStatus" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="CatalogGroupCodeSet" Association="MIND2_PM_GENERAL_SRV.CatalogGroupCode" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="CatalogCodeGroupSet" Role="FromRole_CatalogGroupCode"/><End EntitySet="CatalogCodeSet" Role="ToRole_CatalogGroupCode"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://nwma5.virtual:180/sap/opu/odata/mind2/PM_GENERAL_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="http://nwma5.virtual:180/sap/opu/odata/mind2/PM_GENERAL_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

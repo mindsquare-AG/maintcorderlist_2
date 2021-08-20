@@ -20,6 +20,13 @@
 				"settings": {
 					"localUri": "localService/MAINTAIN_ORDER_SRV/metadata.xml"
 				}
+			},
+			"PM_GENERAL_SRV": {
+				"uri": "/sap/opu/odata/mind2/PM_GENERAL_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/PM_GENERAL_SRV/metadata.xml"
+				}
 			}
 		}
 	},
@@ -74,6 +81,16 @@
 					"defaultCountMode": "Request"
 				},
 				"dataSource": "MAINTAIN_ORDER_SRV",
+				"preload": true
+			},
+			"generalServices": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "PM_GENERAL_SRV",
 				"preload": true
 			}
 		},

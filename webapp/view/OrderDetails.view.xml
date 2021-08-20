@@ -18,7 +18,7 @@
 							<Input value="{Status}" editable="false"/>
 							<!-- Auftragsart -->
 							<Label text="{i18n>master.auart}"/>
-							<Input value="{AUART} {AUFTXT}" editable="false"/>
+							<Input value="{AUART} {AUART_TXT}" editable="false"/>
 							<!-- Techn. Platz oder Equipment SUCHHILFE-->
 							<Label text="{i18n>master.techPlEquip}"/>
 							<Input id="fieldTechObj" showValueHelp="true" valueHelpRequest="valueHelp" value="{TPLNR}" cd:functionalLocationSelectionAllowed="true"
@@ -51,8 +51,8 @@
 							<Input value="{Plnnr} {Plnal}" editable="false"/>
 							<!-- IH-Leistungsart DROPDOWN -->
 							<Label text="{i18n>master.ila}"/>
-							<Select id="dropDownIla" forceSelection="false" items="{ path: '/UserStatusSet'}" selectedKey="{Ila}">
-								<core:ListItem text="{generalServices>Txt30}" additionalText="{generalServices>Txt04}" key="{generalServices>Estat}"/>
+							<Select items="{path: 'generalServices>/MaintenanceActivityTypeSet'}" selectedKey="{Ila}">
+								<core:Item text="{generalServices>Ilatx}" key="{generalServices>Ilart}"/>
 							</Select>
 							<!-- Standort & Betriebsbereich -->
 							<Label text="{i18n>master.standort}"/>
