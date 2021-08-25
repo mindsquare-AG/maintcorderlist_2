@@ -27,25 +27,25 @@
 				<TimePicker id="timePickerRange2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
-				<Input value=""/>
+				<Input value="{Ltxa1}"/>
 				<!-- Endrückmeldung -->
 				<Label/>
-				<CheckBox text="{i18n>master.endR}" selected="{ path : 'Breakdown', type : 'sap.ui.model.type.Boolean' , formatter: '.formatBoolean' }"/>
+				<CheckBox text="{i18n>master.endR}" selected="{ path : 'Leknw', type : 'sap.ui.model.type.Boolean' , formatter: '.formatBoolean' }"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select id="dropDownPriority" forceSelection="false" items="{ path: '/PrioritiesSet'}" selectedKey="{Priority}">
-					<core:Item text="{Name}" key="{Id}"/>
+				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenter'}" selectedKey="{Arbpl}">
+					<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select forceSelection="false" items="{ path: '/PrioritiesSet'}" selectedKey="{Priority}">
-					<core:Item text="{Name}" key="{Id}"/>
+				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityType'}" selectedKey="{Learr}">
+					<core:ListItem text="{generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>
 		</f:SimpleForm>
 		<buttons>
 			<Button text="Abbrechen" press="onBookTimeClose"/>
-			<Button type="Emphasized" text="{i18n>master.bookTime}" press="onWorkOrderSavePressed"/>
+			<Button type="Emphasized" text="{i18n>master.bookTime}" press="onBookTimePressed"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

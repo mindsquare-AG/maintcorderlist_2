@@ -37,8 +37,8 @@
 								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
 							<!-- Verantw. Arbeitsplatz DROPDOWN NOCH NICHT RICHTIG-->
 							<Label text="{i18n>master.Vaplz}"/>
-							<Select id="dropDownVaplz" forceSelection="false" items="{ path: '/UserStatusSet'}" selectedKey="{Vaplz}">
-								<core:ListItem text="{generalServices>Txt30}" additionalText="{generalServices>Txt04}" key="{generalServices>Estat}"/>
+							<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenter'}" selectedKey="{Vaplz}">
+								<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 							</Select>
 							<!-- Wartungsplan -->
 							<Label text="{i18n>master.wartPl}"/>

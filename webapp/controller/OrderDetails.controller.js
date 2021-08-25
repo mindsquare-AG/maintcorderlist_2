@@ -128,6 +128,37 @@ sap.ui.define([
 			this._BookTimeDialog.close();
 		},
 
+		onBookTimePressed: function () {
+			debugger;
+			this.getView().setBusy(true);
+
+			var oModel = this.getView().getModel();
+
+			var oBookTime = this.getView().getBindingContext().getObject();
+
+			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
+			delete oBookTime.__metadata;
+			oModel.create('/ConfirmationSet', oBookTime, {
+				success: function (oData, result) {
+
+					this.getView().setBusy(false);
+					MessageBox.success("Zeitrückmeldung:" + " " + Number(result.data.Id) + " " +
+						"erfolgreich!", {
+							onClose: function () {
+								this._BookTimeDialog.close();
+							},
+							title: "Erfolg"
+						});
+
+				}.bind(this),
+				error: function () {
+					this.getView().setBusy(false);
+					jQuery.sap.require("sap.ui.commons.MessageBox");
+					sap.ui.commons.MessageBox.alert("Es ist ein Fehler aufgetreten.");
+				}.bind(this),
+			});
+		},
+
 		onSwitchBookingTimeOrDate: function (oEvent) {
 
 			if (sap.ui.getCore().byId("switchBooking").getState() === false) {
