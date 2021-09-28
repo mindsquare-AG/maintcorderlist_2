@@ -124,7 +124,7 @@ sap.ui.define([
 
 		onBookTimeClose: function (oEvent) {
 
-			document.removeEventListener("backbutton", this.onBookTimeClose.bind(this), false);
+			this.getView().getModel().resetChanges();
 			this._BookTimeDialog.close();
 		},
 

@@ -20,11 +20,13 @@
 				</HBox>
 				<Label/>
 				<TimePicker id="timePickerHours" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
-					visible="true"/>
+					visible="true" value="{Idaur}"/>
 				<Label id="lblRange1" text="von" visible="false"/>
-				<TimePicker id="timePickerRange1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"/>
+				<TimePicker id="timePickerRange1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"
+					value="{Isdd}"/>
 				<Label id="lblRange2" text="bis" visible="false"/>
-				<TimePicker id="timePickerRange2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"/>
+				<TimePicker id="timePickerRange2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"
+					value="{Iedd}"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<Input value="{Ltxa1}"/>
@@ -33,12 +35,12 @@
 				<CheckBox text="{i18n>master.endR}" selected="{ path : 'Leknw', type : 'sap.ui.model.type.Boolean' , formatter: '.formatBoolean' }"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenter'}" selectedKey="{Arbpl}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Arbpl}">
 					<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityType'}" selectedKey="{Learr}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{Learr}">
 					<core:ListItem text="{generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>
