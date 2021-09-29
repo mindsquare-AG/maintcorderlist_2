@@ -124,17 +124,34 @@ sap.ui.define([
 
 		onBookTimeClose: function (oEvent) {
 
-			document.removeEventListener("backbutton", this.onBookTimeClose.bind(this), false);
+			this.getView().getModel().resetChanges();
 			this._BookTimeDialog.close();
 		},
 
-		onBookTimePressed: function () {
+		onBookTimePressed: function (oEvent) {
 			debugger;
 			this.getView().setBusy(true);
 
 			var oModel = this.getView().getModel();
-
 			var oBookTime = this.getView().getBindingContext().getObject();
+
+			//	var IsddDateTime = oBookTime.Isdd;
+			//	var IeddDateTime = new Date + oBookTime.Iedd;
+
+			var oConf = {
+				Aufnr: oBookTime.AUFNR,
+				Vornr: oBookTime.VORNR,
+				//	Rueck: "",
+				//	Rmzhl: "",
+				Idaur: oBookTime.Idaur,
+				Isdd: oBookTime.Isdd,
+				Iedd: oBookTime.Iedd,
+				Ltxa1: oBookTime.Ltxa1,
+				Leknw: oBookTime.Leknw,
+				Arbpl: oBookTime.Arbpl,
+				Werks: oBookTime.Iwerk,
+				Learr: oBookTime.Learr
+			}
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
 			delete oBookTime.__metadata;
@@ -168,6 +185,8 @@ sap.ui.define([
 				sap.ui.getCore().byId("timePickerRange2").setVisible(false);
 				sap.ui.getCore().byId("lblRange1").setVisible(false);
 				sap.ui.getCore().byId("lblRange2").setVisible(false);
+				sap.ui.getCore().byId("timePickerRange1").setDateValue(null);
+				sap.ui.getCore().byId("timePickerRange2").setDateValue(null);
 
 			} else {
 
@@ -176,7 +195,7 @@ sap.ui.define([
 				sap.ui.getCore().byId("timePickerRange2").setVisible(true);
 				sap.ui.getCore().byId("lblRange1").setVisible(true);
 				sap.ui.getCore().byId("lblRange2").setVisible(true);
-				//	this.getView().getModel().setProperty("DamageEnd", new Date(), oCtx);
+				sap.ui.getCore().byId("timePickerHours").setDateValue(null);
 			}
 		},
 

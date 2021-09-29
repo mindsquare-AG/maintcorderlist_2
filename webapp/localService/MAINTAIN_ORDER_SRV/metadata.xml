@@ -1,30 +1,37 @@
-<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
-	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
 	<edmx:DataServices m:DataServiceVersion="2.0">
-		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MIND2_MAINTAIN_ORDER_SRV" xml:lang="de" sap:schema-version="1">
-			<EntityType Name="Order" sap:content-version="1">
-				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false" sap:filterable="false"/><Property Name="AUFTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false" sap:filterable="false"/><Property Name="AUART" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false"/><Property Name="AUART_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+		<Schema Namespace="MIND2_MAINTAIN_ORDER_SRV" xml:lang="de" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Confirmation" sap:content-version="1">
+				<Key><PropertyRef Name="Aufnr"/><PropertyRef Name="Vornr"/></Key><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Auftrag"/><Property Name="Vornr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vorgang"/><Property Name="Rueck" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Rückmeldung"/><Property Name="Rmzhl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Zähler"/><Property Name="Idaur" Type="Edm.Decimal" Precision="5" Scale="1" sap:unicode="false" sap:label="Istdauer Rück"/><Property Name="Isdd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Datum Iststart"/><Property Name="Iedd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Datum Istende"/><Property Name="Ltxa1" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Rückmeldetext"/><Property Name="Leknw" Type="Edm.Boolean" sap:unicode="false" sap:label="Kein.Restarb."/><Property Name="Arbpl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Arbeitsplatz"/><Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Werk"/><Property Name="Learr" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Leistungsart"/></EntityType>
+			<EntityType Name="Operation" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="Equnr" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Equipment"/><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Auftrag"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AUFTXT" Type="Edm.String" sap:unicode="false" sap:label="Auftragskurztext"/><Property Name="Ila" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="IH-Leistungsart"/><Property Name="Vaplz" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Verantw.ArbPl."/><Property Name="Plnal" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="PlnGrZähler"/><Property Name="Ruecknr" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Rückmeldenummer"/><Property Name="Plgrp" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Planergruppe"/><Property Name="Iwerk" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Planungswerk"/><Property Name="Plnnr" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Plangruppe"/><Property Name="Status" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Status"/><Property Name="Beber" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Betriebsbereich"/><Property Name="Standort" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Standort"/><Property Name="AUART" Type="Edm.String" sap:unicode="false" sap:label="Auftragsart"/><Property Name="AUART_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="PRIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Warpl" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Wartungsplan"/><Property Name="Lstar" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Leistungsart"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false"/><Property Name="DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
-					sap:updatable="false" sap:sortable="false"/><Property Name="START_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
-					sap:updatable="false" sap:sortable="false"/><Property Name="END_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
-					sap:updatable="false" sap:sortable="false"/><Property Name="TPLNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false" sap:filterable="false"/><Property Name="PLTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Wapos" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Wartungsposition"/><Property Name="START_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Start Datum"/><Property Name="END_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="End Datum"/><Property Name="TPLNR" Type="Edm.String" sap:unicode="false" sap:label="Techn. Platz"/><Property Name="PLTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="EQKTX" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
-					sap:sortable="false" sap:filterable="false"/><Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" sap:unicode="false" sap:label="Vorgangskurztext"/><Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityType Name="Order" sap:content-version="1">
+				<Key><PropertyRef Name="AUFNR"/></Key><Property Name="Equnr" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Equipment"/><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Auftrag"/><Property Name="AUFTXT" Type="Edm.String" sap:unicode="false" sap:label="Auftragskurztext"/><Property Name="Ila" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="IH-Leistungsart"/><Property Name="Vaplz" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Verantw.ArbPl."/><Property Name="Plnal" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="PlnGrZähler"/><Property Name="Ruecknr" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Rückmeldenummer"/><Property Name="Plgrp" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Planergruppe"/><Property Name="Iwerk" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Planungswerk"/><Property Name="Plnnr" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Plangruppe"/><Property Name="Status" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Status"/><Property Name="Beber" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Betriebsbereich"/><Property Name="Standort" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Standort"/><Property Name="AUART" Type="Edm.String" sap:unicode="false" sap:label="Auftragsart"/><Property Name="AUART_TXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PRIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Warpl" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Wartungsplan"/><Property Name="Lstar" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Leistungsart"/><Property Name="IS_TEAM_ORDER" Type="Edm.Boolean" sap:unicode="false" sap:label="Flag" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Zeitstempel" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Wapos" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Wartungsposition"/><Property Name="START_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Start Datum"/><Property Name="END_DATE" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="End Datum"/><Property Name="TPLNR" Type="Edm.String" sap:unicode="false" sap:label="Techn. Platz"/><Property Name="PLTXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="EQKTX" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="VORTXT" Type="Edm.String" sap:unicode="false" sap:label="Vorgangskurztext"/><Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="UNAME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false"/><NavigationProperty Name="GetDetails" Relationship="MIND2_MAINTAIN_ORDER_SRV.OrderToDetail" FromRole="FromRole_OrderToDetail"
 					ToRole="ToRole_OrderToDetail"/><NavigationProperty Name="GetChecklists" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetChecklists" FromRole="FromRole_GetChecklists"
 					ToRole="ToRole_GetChecklists"/><NavigationProperty Name="GetImages" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetImages" FromRole="FromRole_GetImages"
 					ToRole="ToRole_GetImages"/><NavigationProperty Name="GetUserSet" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetUserSet" FromRole="FromRole_GetUserSet"
 					ToRole="ToRole_GetUserSet"/><NavigationProperty Name="navChecklistCategorySet" Relationship="MIND2_MAINTAIN_ORDER_SRV.Order_ChecklistCategory"
-					FromRole="FromRole_Order_ChecklistCategory" ToRole="ToRole_Order_ChecklistCategory"/></EntityType>
+					FromRole="FromRole_Order_ChecklistCategory" ToRole="ToRole_Order_ChecklistCategory"/><NavigationProperty Name="NavOperationSet" Relationship="MIND2_MAINTAIN_ORDER_SRV.Order_Operation" FromRole="FromRole_Order_Operation"
+					ToRole="ToRole_Order_Operation"/></EntityType>
 			<EntityType Name="OrderDetail" sap:content-version="1">
 				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
@@ -43,9 +50,9 @@
 					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_URTXT_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="NEW_LTXT_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="HAS_DMG_PIC" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag" sap:creatable="false"
-					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="GetCatalogePictures" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogePictures"
-					FromRole="FromRole_GetCatalogePictures" ToRole="ToRole_GetCatalogePictures"/><NavigationProperty Name="GetCatalogeCodes" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogeCodes" FromRole="FromRole_GetCatalogeCodes"
-					ToRole="ToRole_GetCatalogeCodes"/></EntityType>
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="GetCatalogeCodes" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogeCodes" FromRole="FromRole_GetCatalogeCodes"
+					ToRole="ToRole_GetCatalogeCodes"/><NavigationProperty Name="GetCatalogePictures" Relationship="MIND2_MAINTAIN_ORDER_SRV.GetCatalogePictures"
+					FromRole="FromRole_GetCatalogePictures" ToRole="ToRole_GetCatalogePictures"/></EntityType>
 			<EntityType Name="Checklist" sap:content-version="1">
 				<Key><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/><PropertyRef Name="UVORNR"/></Key><Property Name="AUFNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
 					sap:sortable="false" sap:filterable="false"/><Property Name="VORNR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
@@ -115,35 +122,43 @@
 			</Association>
 			<Association Name="GetChecklists" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetChecklists"/><End Type="MIND2_MAINTAIN_ORDER_SRV.Checklist" Multiplicity="*" Role="ToRole_GetChecklists"/>
 				<ReferentialConstraint>
-					<Principal Role="FromRole_GetChecklists"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Principal>
-					<Dependent Role="ToRole_GetChecklists"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Dependent>
+					<Principal Role="FromRole_GetChecklists"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetChecklists"><PropertyRef Name="AUFNR"/></Dependent>
 				</ReferentialConstraint>
 			</Association>
 			<Association Name="GetImages" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetImages"/><End Type="MIND2_MAINTAIN_ORDER_SRV.Images" Multiplicity="*" Role="ToRole_GetImages"/>
 				<ReferentialConstraint>
-					<Principal Role="FromRole_GetImages"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Principal>
-					<Dependent Role="ToRole_GetImages"><PropertyRef Name="AUFNR"/><PropertyRef Name="VORNR"/></Dependent>
+					<Principal Role="FromRole_GetImages"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetImages"><PropertyRef Name="AUFNR"/></Dependent>
 				</ReferentialConstraint>
 			</Association>
 			<Association Name="GetUserSet" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_GetUserSet"/><End Type="MIND2_MAINTAIN_ORDER_SRV.UserSet" Multiplicity="*" Role="ToRole_GetUserSet"/>
 				<ReferentialConstraint>
-					<Principal Role="FromRole_GetUserSet"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
-					<Dependent Role="ToRole_GetUserSet"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+					<Principal Role="FromRole_GetUserSet"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_GetUserSet"><PropertyRef Name="AUFNR"/></Dependent>
 				</ReferentialConstraint>
 			</Association>
 			<Association Name="Order_ChecklistCategory" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_Order_ChecklistCategory"/><End Type="MIND2_MAINTAIN_ORDER_SRV.ChecklistCategory" Multiplicity="*" Role="ToRole_Order_ChecklistCategory"/>
 				<ReferentialConstraint>
-					<Principal Role="FromRole_Order_ChecklistCategory"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
-					<Dependent Role="ToRole_Order_ChecklistCategory"><PropertyRef Name="Vornr"/><PropertyRef Name="Aufnr"/></Dependent>
+					<Principal Role="FromRole_Order_ChecklistCategory"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_Order_ChecklistCategory"><PropertyRef Name="Aufnr"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Order_Operation" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_Order_Operation"/><End Type="MIND2_MAINTAIN_ORDER_SRV.Operation" Multiplicity="*" Role="ToRole_Order_Operation"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Order_Operation"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_Order_Operation"><PropertyRef Name="AUFNR"/></Dependent>
 				</ReferentialConstraint>
 			</Association>
 			<Association Name="OrderToDetail" sap:content-version="1"><End Type="MIND2_MAINTAIN_ORDER_SRV.Order" Multiplicity="1" Role="FromRole_OrderToDetail"/><End Type="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" Multiplicity="1" Role="ToRole_OrderToDetail"/>
 				<ReferentialConstraint>
-					<Principal Role="FromRole_OrderToDetail"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Principal>
-					<Dependent Role="ToRole_OrderToDetail"><PropertyRef Name="VORNR"/><PropertyRef Name="AUFNR"/></Dependent>
+					<Principal Role="FromRole_OrderToDetail"><PropertyRef Name="AUFNR"/></Principal>
+					<Dependent Role="ToRole_OrderToDetail"><PropertyRef Name="AUFNR"/></Dependent>
 				</ReferentialConstraint>
 			</Association>
-			<EntityContainer Name="MIND2_MAINTAIN_ORDER_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="OrderSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Order" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+			<EntityContainer Name="MIND2_MAINTAIN_ORDER_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ConfirmationSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Confirmation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="OperationSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Operation" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="OrderSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Order" sap:creatable="false" sap:updatable="false" sap:deletable="false"
 				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="OrderDetailSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.OrderDetail" sap:creatable="false" sap:updatable="false"
 				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ChecklistSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.Checklist" sap:creatable="false" sap:updatable="false"
 				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="CatalogCodesSet" EntityType="MIND2_MAINTAIN_ORDER_SRV.CatalogCodes" sap:creatable="false" sap:updatable="false"
@@ -165,13 +180,15 @@
 					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_OrderToDetail"/><End EntitySet="OrderDetailSet" Role="ToRole_OrderToDetail"/></AssociationSet>
 				<AssociationSet Name="GetChecklistsSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetChecklists" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_GetChecklists"/><End EntitySet="ChecklistSet" Role="ToRole_GetChecklists"/></AssociationSet>
+				<AssociationSet Name="Order_OperationSet" Association="MIND2_MAINTAIN_ORDER_SRV.Order_Operation" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_Order_Operation"/><End EntitySet="OperationSet" Role="ToRole_Order_Operation"/></AssociationSet>
 				<AssociationSet Name="GetUserSetSet" Association="MIND2_MAINTAIN_ORDER_SRV.GetUserSet" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_GetUserSet"/><End EntitySet="UserSetSet" Role="ToRole_GetUserSet"/></AssociationSet>
 				<FunctionImport Name="CloseOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
 				<FunctionImport Name="RejectOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/></FunctionImport>
 				<FunctionImport Name="AssignOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
-			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
-				href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
-				href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"/></Schema>
+			</EntityContainer><atom:link rel="self" href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
