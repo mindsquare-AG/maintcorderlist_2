@@ -37,7 +37,7 @@
 								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
 							<!-- Verantw. Arbeitsplatz DROPDOWN NOCH NICHT RICHTIG-->
 							<Label text="{i18n>master.Vaplz}"/>
-							<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenter'}" selectedKey="{Vaplz}">
+							<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Vaplz}">
 								<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 							</Select>
 							<!-- Wartungsplan -->
@@ -62,7 +62,7 @@
 					<IconTabBar id="idIconTabBarInlineMode" headerMode="Inline" class="sapUiResponsiveContentPadding">
 						<items>
 							<IconTabFilter text="{i18n>master.posDaten}" key="info">
-								<Table noDataText="No Data">
+								<Table noDataText="No Data" items="{NavOperationSet}" growing="true">
 									<items>
 										<ColumnListItem counter="0">
 											<cells>

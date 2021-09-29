@@ -33,12 +33,12 @@
 				<CheckBox text="{i18n>master.endR}" selected="{Leknw}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenter'}" selectedKey="{Arbpl}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Arbpl}">
 					<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityType'}" selectedKey="{Learr}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{Learr}">
 					<core:ListItem text="{generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>
