@@ -20,8 +20,7 @@
 				</HBox>
 				<Label/>
 				<TimePicker id="timePickerHours" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
-					visible="true" value="{ path: 'Idaur' , type: 'sap.ui.model.type.Time', formatOptions: { pattern: mm } }"/>
-				<!-- value="{ path: 'Idaur' , type: 'sap.ui.model.type.Time', formatOptions: { pattern: mm }" -->
+					visible="true" value="{Idaur}"/>
 				<Label id="lblRange1" text="von" visible="false"/>
 				<TimePicker id="timePickerRange1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"
 					value="{Isdd}"/>
