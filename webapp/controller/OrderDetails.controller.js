@@ -34,33 +34,38 @@ sap.ui.define([
 		},
 
 		fnNavBack: function (oEvent) {
-			if (!this.oApproveDialog) {
-				this.oApproveDialog = new Dialog({
-					type: DialogType.Message,
-					title: "Warnung",
-					content: new Text({
-						text: "Alle nicht gespeicherten Änderungen gehen verloren. Fortfahren?"
-					}),
-					beginButton: new Button({
-						type: ButtonType.Emphasized,
-						text: "Bestätigen",
-						press: function () {
-							this.getView().getModel().resetChanges();
-							var oRouter = this.getOwnerComponent().getRouter();
-							oRouter.navTo("RouteApp", {}, true);
-							this.oApproveDialog.close();
-						}.bind(this)
-					}),
-					endButton: new Button({
-						text: "Abbrechen",
-						press: function () {
-							this.oApproveDialog.close();
-						}.bind(this)
-					})
-				});
-			}
 
-			this.oApproveDialog.open();
+			if (this.getView().getModel().hasPendingChanges()) {
+				if (!this.oApproveDialog) {
+					this.oApproveDialog = new Dialog({
+						type: DialogType.Message,
+						title: "Warnung",
+						content: new Text({
+							text: "Alle nicht gespeicherten Änderungen gehen verloren. Fortfahren?"
+						}),
+						beginButton: new Button({
+							type: ButtonType.Emphasized,
+							text: "Bestätigen",
+							press: function () {
+								this.getView().getModel().resetChanges();
+								var oRouter = this.getOwnerComponent().getRouter();
+								oRouter.navTo("RouteApp", {}, true);
+								this.oApproveDialog.close();
+							}.bind(this)
+						}),
+						endButton: new Button({
+							text: "Abbrechen",
+							press: function () {
+								this.oApproveDialog.close();
+							}.bind(this)
+						})
+					});
+				}
+
+				this.oApproveDialog.open();
+			} else {
+				this.getOwnerComponent().getRouter().navTo("RouteApp", {}, true);
+			}
 
 		},
 
@@ -119,6 +124,17 @@ sap.ui.define([
 
 			}
 
+			var oModel = this.getView().getModel();
+			var oCtx = this.getView().getBindingContext();
+			var sAufnr = oModel.getProperty("AUFNR", oCtx);
+			var sVornr = oModel.getProperty("VORNR", oCtx);
+			var oCtx = oModel.createEntry("/ConfirmationSet", {
+				properties: {
+					Aufnr: sAufnr,
+					Vornr: sVornr
+				}
+			});
+			this._BookTimeDialog.setBindingContext(oCtx);
 			this._BookTimeDialog.open();
 		},
 
@@ -133,7 +149,8 @@ sap.ui.define([
 			this.getView().setBusy(true);
 
 			var oModel = this.getView().getModel();
-			var oBookTime = this.getView().getBindingContext().getObject();
+			var oCtx = oEvent.getSource().getBindingContext();
+			var oBookTime = oCtx.getObject();
 
 			//	var IsddDateTime = oBookTime.Isdd;
 			//	var IeddDateTime = new Date + oBookTime.Iedd;
@@ -154,24 +171,24 @@ sap.ui.define([
 			}
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
-			delete oBookTime.__metadata;
+			//	delete oBookTime.__metadata;
 			oModel.create('/ConfirmationSet', oBookTime, {
 				success: function (oData, result) {
-
+					oModel.deleteCreatedEntry(oCtx);
 					this.getView().setBusy(false);
-					MessageBox.success("Zeitrückmeldung:" + " " + Number(result.data.Id) + " " +
+					MessageBox.success("Zeitrückmeldung:" + " " + Number(oData.Id) + " " +
 						"erfolgreich!", {
 							onClose: function () {
 								this._BookTimeDialog.close();
-							},
+							}.bind(this),
 							title: "Erfolg"
 						});
 
 				}.bind(this),
 				error: function () {
 					this.getView().setBusy(false);
-					jQuery.sap.require("sap.ui.commons.MessageBox");
-					sap.ui.commons.MessageBox.alert("Es ist ein Fehler aufgetreten.");
+
+					MessageBox.alert("Es ist ein Fehler aufgetreten.");
 				}.bind(this),
 			});
 		},

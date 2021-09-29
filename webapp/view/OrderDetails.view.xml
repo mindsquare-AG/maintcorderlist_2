@@ -68,7 +68,7 @@
 											<cells>
 												<ObjectIdentifier text="{VORNR}"></ObjectIdentifier>
 												<Text text="{VORTXT}"></Text>
-												<HBox>
+												<HBox >
 													<Button text="{i18n>master.bookTime}" icon="sap-icon://create-entry-time" press="onBookTime"/>
 												</HBox>
 											</cells>

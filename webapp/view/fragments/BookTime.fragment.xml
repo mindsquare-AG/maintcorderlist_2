@@ -15,24 +15,22 @@
 			<f:content>
 				<HBox alignItems="Center" justifyContent="Center">
 					<Text renderWhitespace="true" text="Stunden"/>
-					<Switch id="switchBooking" state="false" change="onSwitchBookingTimeOrDate" customTextOn=" " customTextOff=" "/>
+					<Switch id="switchBooking" state="{view>/BookTime/Hours}" customTextOn=" " customTextOff=" "/>
 					<Text renderWhitespace="true" text="Zeiten"/>
 				</HBox>
 				<Label/>
-				<TimePicker id="timePickerHours" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
-					visible="true" value="{Idaur}"/>
-				<Label id="lblRange1" text="von" visible="false"/>
-				<TimePicker id="timePickerRange1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"
-					value="{Isdd}"/>
-				<Label id="lblRange2" text="bis" visible="false"/>
-				<TimePicker id="timePickerRange2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="false"
-					value="{Iedd}"/>
+				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
+					visible="{= !${view>/BookTime/Hours}}"/>
+				<Label text="von" visible="{view>/BookTime/Hours}"/>
+				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
+				<Label text="bis" visible="{view>/BookTime/Hours}"/>
+				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<Input value="{Ltxa1}"/>
 				<!-- Endrückmeldung -->
 				<Label/>
-				<CheckBox text="{i18n>master.endR}" selected="{ path : 'Leknw', type : 'sap.ui.model.type.Boolean' , formatter: '.formatBoolean' }"/>
+				<CheckBox text="{i18n>master.endR}" selected="{Leknw}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
 				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Arbpl}">
