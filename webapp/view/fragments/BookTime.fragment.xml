@@ -15,16 +15,21 @@
 			<f:content>
 				<HBox alignItems="Center" justifyContent="Center">
 					<Text renderWhitespace="true" text="Stunden"/>
-					<Switch id="switchBooking" state="{view>/BookTime/Hours}" customTextOn=" " customTextOff=" "/>
+					<Switch id="switchBooking" state="{view>/BookTime/Hours}" customTextOn=" " customTextOff=" " change="handleChange"/>
 					<Text renderWhitespace="true" text="Zeiten"/>
 				</HBox>
 				<Label/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
-					visible="{= !${view>/BookTime/Hours}}"/>
+				<!-- Stunden -->
+				<TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
+					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/>
+				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
+				<TimePicker id="time2" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Uhrzeit"
+					visible="{view>/BookTime/Hours}" value="{Isdd}"/>
+				<!-- Uhrzeit bis -->
 				<Label text="bis" visible="{view>/BookTime/Hours}"/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
+				<TimePicker id="time3" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Uhrzeit"
+					visible="{view>/BookTime/Hours}" value="{Iedd}"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<Input value="{Ltxa1}"/>

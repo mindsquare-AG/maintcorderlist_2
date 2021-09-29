@@ -95,7 +95,7 @@
 				<footer>
 					<Bar>
 						<contentRight>
-							<Button type="Accept" icon="sap-icon://save" text="Auftrag abschließen" press="fnOnSaveButtonPressed" id="btn_Save"/>
+							<Button type="Accept" icon="sap-icon://save" text="Auftrag abschließen" press="onSaveButtonPressed" id="btn_Save"/>
 						</contentRight>
 					</Bar>
 				</footer>

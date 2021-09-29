@@ -126,8 +126,10 @@ sap.ui.define([
 
 			var oModel = this.getView().getModel();
 			var oCtx = this.getView().getBindingContext();
+			var oLineCtx = oEvent.getSource().getBindingContext();
 			var sAufnr = oModel.getProperty("AUFNR", oCtx);
-			var sVornr = oModel.getProperty("VORNR", oCtx);
+			var sVornr = oModel.getProperty("VORNR", oLineCtx);
+			var oLineCtx = oEvent.getSource().getBindingContext();
 			var oCtx = oModel.createEntry("/ConfirmationSet", {
 				properties: {
 					Aufnr: sAufnr,
@@ -139,9 +141,14 @@ sap.ui.define([
 		},
 
 		onBookTimeClose: function (oEvent) {
-
 			this.getView().getModel().resetChanges();
 			this._BookTimeDialog.close();
+		},
+
+		handleChange: function (oEvent) {
+			sap.ui.getCore().byId("time1").setDateValue(null);
+			sap.ui.getCore().byId("time2").setDateValue(null);
+			sap.ui.getCore().byId("time3").setDateValue(null);
 		},
 
 		onBookTimePressed: function (oEvent) {
@@ -158,8 +165,6 @@ sap.ui.define([
 			var oConf = {
 				Aufnr: oBookTime.AUFNR,
 				Vornr: oBookTime.VORNR,
-				//	Rueck: "",
-				//	Rmzhl: "",
 				Idaur: oBookTime.Idaur,
 				Isdd: oBookTime.Isdd,
 				Iedd: oBookTime.Iedd,
@@ -192,28 +197,12 @@ sap.ui.define([
 				}.bind(this),
 			});
 		},
+		/* =========================================================== */
+		/* Auftrag abschließen Funktionen       		               */
+		/* =========================================================== */
 
-		onSwitchBookingTimeOrDate: function (oEvent) {
+		onSaveButtonPressed: function () {
 
-			if (sap.ui.getCore().byId("switchBooking").getState() === false) {
-
-				sap.ui.getCore().byId("timePickerHours").setVisible(true);
-				sap.ui.getCore().byId("timePickerRange1").setVisible(false);
-				sap.ui.getCore().byId("timePickerRange2").setVisible(false);
-				sap.ui.getCore().byId("lblRange1").setVisible(false);
-				sap.ui.getCore().byId("lblRange2").setVisible(false);
-				sap.ui.getCore().byId("timePickerRange1").setDateValue(null);
-				sap.ui.getCore().byId("timePickerRange2").setDateValue(null);
-
-			} else {
-
-				sap.ui.getCore().byId("timePickerHours").setVisible(false);
-				sap.ui.getCore().byId("timePickerRange1").setVisible(true);
-				sap.ui.getCore().byId("timePickerRange2").setVisible(true);
-				sap.ui.getCore().byId("lblRange1").setVisible(true);
-				sap.ui.getCore().byId("lblRange2").setVisible(true);
-				sap.ui.getCore().byId("timePickerHours").setDateValue(null);
-			}
 		},
 
 		/* =========================================================== */
