@@ -146,7 +146,7 @@ sap.ui.define([
 		},
 
 		handleChange: function (oEvent) {
-			sap.ui.getCore().byId("time1").setDateValue(null);
+			sap.ui.getCore().byId("time1").setValue(null);
 			sap.ui.getCore().byId("time2").setDateValue(null);
 			sap.ui.getCore().byId("time3").setDateValue(null);
 		},
@@ -202,7 +202,33 @@ sap.ui.define([
 		/* =========================================================== */
 
 		onSaveButtonPressed: function () {
+			this.getView().setBusy(true);
 
+			var oModel = this.getView().getModel();
+
+			//1. zu aktualisierenden Modeleintrag auslesen
+			var oEntry = this.getView().getBindingContext();
+			var oData = oEntry.getObject();
+
+			//2. Key aufbereiten
+			/*var sUpdatePath = this.getView().getModel().createKey("/MaintenanceNotificationSet", {
+				Id: oEntry.Id
+			});*/
+			// var sUpdatePath = "/" + this.getView().getModel().getParameter("arguments").oCtx;
+
+			//3. Update-Request versenden
+			this.getView().getModel().update(oEntry.getPath(), oData, {
+				success: function () {
+					var oRouter = this.fnGetRouterInstance();
+					this.getView().setBusy(false);
+					oRouter.navTo("RouteApp");
+					MessageToast.show("Aktualisierung erfolgreich");
+				}.bind(this),
+				error: function (oError) {
+					this.getView().setBusy(false);
+					MessageToast.show("Es ist ein Fehler ist aufgetreten!");
+				}.bind(this)
+			});
 		},
 
 		/* =========================================================== */
