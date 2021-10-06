@@ -51,6 +51,7 @@ sap.ui.define([
 								var oRouter = this.getOwnerComponent().getRouter();
 								oRouter.navTo("RouteApp", {}, true);
 								this.oApproveDialog.close();
+
 							}.bind(this)
 						}),
 						endButton: new Button({
@@ -64,6 +65,7 @@ sap.ui.define([
 
 				this.oApproveDialog.open();
 			} else {
+
 				this.getOwnerComponent().getRouter().navTo("RouteApp", {}, true);
 			}
 
@@ -203,7 +205,7 @@ sap.ui.define([
 
 		onSaveButtonPressed: function () {
 			this.getView().setBusy(true);
-
+			debugger;
 			var oModel = this.getView().getModel();
 
 			//1. zu aktualisierenden Modeleintrag auslesen
