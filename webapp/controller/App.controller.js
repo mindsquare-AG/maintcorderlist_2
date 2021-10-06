@@ -9,7 +9,7 @@ sap.ui.define([
 
 		},
 		fnOnItemPressed: function (oEvent) {
-			debugger;
+		
 			var oRouter = this.fnGetRouterInstance();
 			oRouter.navTo("OrderDetails", {
 				oCtx: oEvent.getSource().getBindingContextPath().substr(1)

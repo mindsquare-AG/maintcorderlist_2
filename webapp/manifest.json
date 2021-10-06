@@ -14,18 +14,18 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"MAINTAIN_ORDER_SRV": {
-				"uri": "/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/",
-				"type": "OData",
-				"settings": {
-					"localUri": "localService/MAINTAIN_ORDER_SRV/metadata.xml"
-				}
-			},
 			"PM_GENERAL_SRV": {
 				"uri": "/sap/opu/odata/mind2/PM_GENERAL_SRV/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/PM_GENERAL_SRV/metadata.xml"
+				}
+			},
+			"MAINTAIN_ORDER_SRV": {
+				"uri": "/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/MAINTAIN_ORDER_SRV/metadata.xml"
 				}
 			}
 		}
@@ -77,7 +77,7 @@
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
-					"defaultBindingMode": "TwoWay",
+					"defaultBindingMode": "OneWay",
 					"defaultCountMode": "Request"
 				},
 				"dataSource": "MAINTAIN_ORDER_SRV",
@@ -101,9 +101,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -115,17 +117,24 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteApp",
-				"pattern": "RouteApp",
-				"target": ["TargetApp"]
-			}, {
-				"name": "OrderDetails",
-				"pattern": "{oCtx}",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["OrderDetails"]
-			}],
+			"routes": [
+				{
+					"name": "RouteApp",
+					"pattern": "RouteApp",
+					"target": [
+						"TargetApp"
+					]
+				},
+				{
+					"name": "OrderDetails",
+					"pattern": "{oCtx}",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"OrderDetails"
+					]
+				}
+			],
 			"targets": {
 				"TargetApp": {
 					"viewType": "XML",
@@ -142,6 +151,10 @@
 	},
 	"sap.platform.hcp": {
 		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zfioriorderlist/webapp",
 		"_version": "1.1.0"
 	}
 }

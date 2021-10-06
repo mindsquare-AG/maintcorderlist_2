@@ -229,12 +229,12 @@ sap.ui.define([
 					MessageToast.show("Es ist ein Fehler ist aufgetreten!");
 				}.bind(this)
 			});
-		},
+		}
 
 		/* =========================================================== */
 		/* Techn. Platz oder Equipment Funktionen                      */
 		/* =========================================================== */
-
+/*
 		valueHelp: function (oEvent) {
 			var oElementData = oEvent.getSource().data();
 
@@ -318,7 +318,7 @@ sap.ui.define([
 				oDialog.open();
 			});
 		},
-
+	*/
 	});
 
 });

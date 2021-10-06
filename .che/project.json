@@ -1,15 +1,1 @@
-{
-	"type": "sap.web",
-	"builders": {
-		"configs": {}
-	},
-	"runners": {
-		"configs": {}
-	},
-	"attributes": {
-		"sap.watt.common.setting": [
-			"{\"projectType\":[\"sap.watt.uitools.ide.web\",\"sap.watt.uitools.ide.fiori\"],\"generation\":[{\"templateId\":\"ui5template.basicSAPUI5ApplicationProjectCommon\",\"templateVersion\":\"1.32.0\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:42 GMT\"},{\"templateId\":\"ui5template.basicSAPUI5ApplicationProject\",\"templateVersion\":\"1.40.12\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:45 GMT\"},{\"templateId\":\"testGenerationWizard.createteststructure\",\"templateVersion\":\"1.1.0\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:53 GMT\"},{\"templateId\":\"servicecatalog.connectivityComponentForManifest\",\"templateVersion\":\"0.0.0\",\"dateTimeStamp\":\"Thu, 19 Aug 2021 08:40:15 GMT\"}],\"build\":{\"targetFolder\":\"dist\",\"sourceFolder\":\"webapp\"},\"codeCheckingTriggers\":{\"notifyBeforePush\":false,\"notifyBeforePushLevel\":\"Error\",\"blockPush\":false,\"blockPushLevel\":\"Error\"},\"translation\":{\"translationDomain\":\"\",\"supportedLanguages\":\"en,fr,de\",\"defaultLanguage\":\"en\",\"defaultI18NPropertyFile\":\"i18n.properties\",\"resourceModelName\":\"i18n\"},\"basevalidator\":{\"services\":{\"json\":\"jsonValidator\",\"xml\":\"fioriXmlAnalysis\",\"js\":\"fioriJsValidator\"}},\"mockpreview\":{\"mockUri\":\"/sap/opu/odata/mind2/PM_GENERAL_SRV\",\"metadataFilePath\":\"\",\"loadJSONFiles\":false,\"loadCustomRequests\":false,\"mockRequestsFilePath\":\"\"},\"hcpdeploy\":{\"account\":\"acd70b8e3\",\"name\":\"maintcorderlistrnv\",\"lastVersionWeTriedToDeploy\":\"1.0.0\"}}"
-		]
-	},
-	"mixinTypes": []
-}
+{"type":"sap.web","builders":{"configs":{}},"runners":{"configs":{}},"attributes":{"sap.watt.common.setting":["{\"projectType\":[\"sap.watt.uitools.ide.web\",\"sap.watt.uitools.ide.fiori\"],\"generation\":[{\"templateId\":\"ui5template.basicSAPUI5ApplicationProjectCommon\",\"templateVersion\":\"1.32.0\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:42 GMT\"},{\"templateId\":\"ui5template.basicSAPUI5ApplicationProject\",\"templateVersion\":\"1.40.12\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:45 GMT\"},{\"templateId\":\"testGenerationWizard.createteststructure\",\"templateVersion\":\"1.1.0\",\"dateTimeStamp\":\"Mon, 16 Aug 2021 17:08:53 GMT\"},{\"templateId\":\"servicecatalog.connectivityComponentForManifest\",\"templateVersion\":\"0.0.0\",\"dateTimeStamp\":\"Thu, 30 Sep 2021 13:43:59 GMT\"}],\"build\":{\"targetFolder\":\"dist\",\"sourceFolder\":\"webapp\"},\"codeCheckingTriggers\":{\"notifyBeforePush\":false,\"notifyBeforePushLevel\":\"Error\",\"blockPush\":false,\"blockPushLevel\":\"Error\"},\"translation\":{\"translationDomain\":\"\",\"supportedLanguages\":\"en,fr,de\",\"defaultLanguage\":\"en\",\"defaultI18NPropertyFile\":\"i18n.properties\",\"resourceModelName\":\"i18n\"},\"basevalidator\":{\"services\":{\"json\":\"jsonValidator\",\"xml\":\"fioriXmlAnalysis\",\"js\":\"fioriJsValidator\"}},\"mockpreview\":{\"mockUri\":\"/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV\",\"metadataFilePath\":\"\",\"loadJSONFiles\":false,\"loadCustomRequests\":false,\"mockRequestsFilePath\":\"\"},\"hcpdeploy\":{\"account\":\"acd70b8e3\",\"name\":\"maintcorderlistrnv\",\"lastVersionWeTriedToDeploy\":\"1.0.0\"},\"deploy\":{\"destination\":\"EGW\",\"name\":\"ZFIORIORDERLIST\"}}"]},"mixinTypes":[]}
