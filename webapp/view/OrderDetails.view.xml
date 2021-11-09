@@ -9,13 +9,13 @@
 						<f:content>
 							<!-- Auftragskurztext -->
 							<Label text="{i18n>master.shortText}"/>
-							<Input value="{AUFTXT}"/>
-							<!-- Rückmeldenummer -->
-							<Label text="{i18n>master.rueckNr}"/>
-							<Input value="{Ruecknr}"/>
+							<Input value="{AUFTXT}" editable="false"/>
+							<!-- Anwenderstatus -->
+							<Label text="{i18n>master.userStatus}"/>
+							<Input value="{user_status}" editable="false"/>
 							<!-- Auftragsstatus -->
-							<Label text="{i18n>master.status}"/>
-							<Input value="{Status}" editable="false"/>
+							<Label text="{i18n>master.sysStatus}"/>
+							<Input value="{sys_status}" editable="false"/>
 							<!-- Auftragsart -->
 							<Label text="{i18n>master.auart}"/>
 							<Input value="{AUART} {AUART_TXT}" editable="false"/>
@@ -24,9 +24,10 @@
 							<Input value="{TPLNR}" editable="false"/>
 							<!-- Verantw. Arbeitsplatz -->
 							<Label text="{i18n>master.Vaplz}"/>
-							<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Vaplz}">
+							<Input value="{Vaplz}" editable="false"/>
+							<!--	<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Vaplz}">
 								<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
-							</Select>
+							</Select> -->
 							<!-- Wartungsplan -->
 							<Label text="{i18n>master.wartPl}"/>
 							<Input value="{Warpl}" editable="false"/>
@@ -38,9 +39,10 @@
 							<Input value="{Plnnr} {Plnal}" editable="false"/>
 							<!-- IH-Leistungsart  -->
 							<Label text="{i18n>master.ila}"/>
-							<Select items="{path: 'generalServices>/MaintenanceActivityTypeSet'}" selectedKey="{Ila}">
+							<Input value="{Ila}" editable="false"/>
+							<!-- <Select items="{path: 'generalServices>/MaintenanceActivityTypeSet'}" selectedKey="{Ila}">
 								<core:Item text="{generalServices>Ilatx}" key="{generalServices>Ilart}"/>
-							</Select>
+							</Select> -->
 							<!-- Standort & Betriebsbereich -->
 							<Label text="{i18n>master.standort}"/>
 							<Input value="{Standort} {Beber}" editable="false"/>
@@ -82,7 +84,7 @@
 				<footer>
 					<Bar>
 						<contentRight>
-							<Button type="Accept" icon="sap-icon://save" text="Speichern" press="onSaveButtonPressed" id="btn_Save"/>
+							<Button type="Accept" icon="sap-icon://save" text="{i18n>master.btnAuftragAb}" press="onSaveButtonPressed" id="btn_Save"/>
 						</contentRight>
 					</Bar>
 				</footer>
