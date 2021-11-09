@@ -21,21 +21,8 @@
 							<Input value="{AUART} {AUART_TXT}" editable="false"/>
 							<!-- Techn. Platz oder Equipment SUCHHILFE-->
 							<Label text="{i18n>master.techPlEquip}"/>
-							<Input id="fieldTechObj" showValueHelp="true" valueHelpRequest="valueHelp" value="{TPLNR}" cd:functionalLocationSelectionAllowed="true"
-								cd:equipmentSelectionAllowed="true" cd:functionalLocationsWithDisabledInstallationSelectionAllowed="true" cd:idPropertyName="/TECHOBJ"
-								cd:descriptionPropertyName="/TECHOBJDESC" cd:propertyModel="notificationHelper"
-								cd:parentFunctionalLocationIdPropertyName="/Item1ParentFunctionalLocationId"
-								cd:parentFunctionalLocationDescriptionPropertyName="/Item1ParentFunctionalLocationDescription" cd:isEquipmentPropertyName="/IsEquipment"/>
-							<!-- Functional Location / Equipment Description -->
-							<Label text=" {i18n>master.field.technicalObjectDescription}"/>
-							<Input editable="false" value="{notificationHelper>/TECHOBJDESC}"/>
-							<!-- Id and description of functional location the equipment is equipped in -->
-							<Label text="{i18n>Item1ParentLabel}" visible="{= ${notificationHelper>/IsEquipment} === true}"/>
-							<Input editable="false" value="{notificationHelper>/Item1ParentFunctionalLocationId}"
-								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
-							<Input editable="false" value="{notificationHelper>/Item1ParentFunctionalLocationDescription}"
-								visible="{= ${notificationHelper>/IsEquipment} === true}"/>
-							<!-- Verantw. Arbeitsplatz DROPDOWN NOCH NICHT RICHTIG-->
+							<Input value="{TPLNR}" editable="false"/>
+							<!-- Verantw. Arbeitsplatz -->
 							<Label text="{i18n>master.Vaplz}"/>
 							<Select id="dropDownVaplz" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Vaplz}">
 								<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
@@ -49,7 +36,7 @@
 							<!-- Plangruppe & Plangruppenzähler -->
 							<Label text="{i18n>master.planGrPlanGrZ}"/>
 							<Input value="{Plnnr} {Plnal}" editable="false"/>
-							<!-- IH-Leistungsart DROPDOWN -->
+							<!-- IH-Leistungsart  -->
 							<Label text="{i18n>master.ila}"/>
 							<Select items="{path: 'generalServices>/MaintenanceActivityTypeSet'}" selectedKey="{Ila}">
 								<core:Item text="{generalServices>Ilatx}" key="{generalServices>Ilart}"/>
@@ -95,7 +82,7 @@
 				<footer>
 					<Bar>
 						<contentRight>
-							<Button type="Accept" icon="sap-icon://save" text="Auftrag abschließen" press="onSaveButtonPressed" id="btn_Save"/>
+							<Button type="Accept" icon="sap-icon://save" text="Speichern" press="onSaveButtonPressed" id="btn_Save"/>
 						</contentRight>
 					</Bar>
 				</footer>
