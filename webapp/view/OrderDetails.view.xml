@@ -50,7 +50,7 @@
 					</f:SimpleForm>
 					<IconTabBar id="idIconTabBarInlineMode" headerMode="Inline" class="sapUiResponsiveContentPadding">
 						<items>
-							<IconTabFilter text="{i18n>master.posDaten}" key="info">
+							<IconTabFilter text="{i18n>master.vrge}" key="info">
 								<Table noDataText="No Data" items="{NavOperationSet}" growing="true">
 									<items>
 										<ColumnListItem counter="0">

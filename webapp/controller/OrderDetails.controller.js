@@ -154,7 +154,7 @@ sap.ui.define([
 		},
 
 		onBookTimePressed: function (oEvent) {
-			debugger;
+			  
 			this.getView().setBusy(true);
 
 			var oModel = this.getView().getModel();
@@ -175,7 +175,7 @@ sap.ui.define([
 				Arbpl: oBookTime.Arbpl,
 				Werks: oBookTime.Iwerk,
 				Learr: oBookTime.Learr
-			}
+			};
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
 			//	delete oBookTime.__metadata;
@@ -196,7 +196,7 @@ sap.ui.define([
 					this.getView().setBusy(false);
 
 					MessageBox.alert("Es ist ein Fehler aufgetreten.");
-				}.bind(this),
+				}.bind(this)
 			});
 		},
 		/* =========================================================== */
@@ -205,7 +205,7 @@ sap.ui.define([
 
 		onSaveButtonPressed: function () {
 			this.getView().setBusy(true);
-			debugger;
+			  
 			var oModel = this.getView().getModel();
 
 			//1. zu aktualisierenden Modeleintrag auslesen
