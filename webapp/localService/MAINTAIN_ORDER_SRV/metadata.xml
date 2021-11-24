@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
-	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
 	<edmx:DataServices m:DataServiceVersion="2.0">
-		<Schema Namespace="MIND2_MAINTAIN_ORDER_SRV" xml:lang="de" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="MIND2_MAINTAIN_ORDER_SRV" xml:lang="de" sap:schema-version="1">
 			<EntityType Name="Confirmation" sap:content-version="1">
 				<Key><PropertyRef Name="Aufnr"/><PropertyRef Name="Vornr"/></Key><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Auftrag"/><Property Name="Vornr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Vorgang"/><Property Name="Rueck" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Rückmeldung"/><Property Name="Rmzhl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Zähler"/><Property Name="Idaur" Type="Edm.Decimal" Precision="5" Scale="1" sap:unicode="false" sap:label="Istdauer Rück"/><Property Name="Isdd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Datum Iststart"/><Property Name="Iedd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Datum Istende"/><Property Name="Ltxa1" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Rückmeldetext"/><Property Name="Leknw" Type="Edm.Boolean" sap:unicode="false" sap:label="Kein.Restarb."/><Property Name="Arbpl" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Arbeitsplatz"/><Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Werk"/><Property Name="Learr" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Leistungsart"/></EntityType>
 			<EntityType Name="Operation" sap:content-version="1">
@@ -187,8 +186,6 @@
 				<FunctionImport Name="CloseOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
 				<FunctionImport Name="RejectOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/></FunctionImport>
 				<FunctionImport Name="AssignOrder" ReturnType="MIND2_MAINTAIN_ORDER_SRV.Order" EntitySet="OrderSet" m:HttpMethod="POST"><Parameter Name="AUFNR" Type="Edm.String" Mode="In"/><Parameter Name="VORNR" Type="Edm.String" Mode="In"/><Parameter Name="UNAME" Type="Edm.String" Mode="In"/></FunctionImport>
-			</EntityContainer><atom:link rel="self" href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"
-				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="http://nwma5.virtual:180/sap/opu/odata/mind2/MAINTAIN_ORDER_SRV/$metadata"
-				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./mind2/MAINTAIN_ORDER_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./mind2/MAINTAIN_ORDER_SRV/$metadata"/></Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
