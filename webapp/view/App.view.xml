@@ -4,7 +4,7 @@
 	<Shell appWidthLimited="false">
 		<App id="app">
 			<pages>
-				<Page title="{i18n>title}" titleAlignment="Center">
+				<Page title="{i18n>title}">
 					<content>
 						<!-- use this to make the table occupy the available screen height -->
 						<VBox fitContainer="true">
