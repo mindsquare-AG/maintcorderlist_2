@@ -45,10 +45,10 @@
       "path": "/sap/opu/odata",
       "target": {
         "type": "destination",
-        "name": "GatewayMindsquare",
+        "name": "EGW",
         "entryPath": "/sap/opu/odata"
       },
-      "description": "GatewayMindsquare"
+      "description": "EGW"
     }
   ],
   "sendWelcomeFileRedirect": true

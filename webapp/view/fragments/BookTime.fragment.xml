@@ -14,17 +14,21 @@
 		<f:SimpleForm editable="true" emptySpanL="3" labelSpanL="3" emptySpanM="3" labelSpanM="3" layout="ResponsiveGridLayout">
 			<f:content>
 				<HBox alignItems="Center" justifyContent="Center">
-					<Text renderWhitespace="true" text="Stunden"/>
-					<Switch id="switchBooking" state="{view>/BookTime/Hours}" customTextOn=" " customTextOff=" "/>
+					<Text renderWhitespace="true" text="Dauer"/>
+					<Switch id="switchBooking" state="{view>/BookTime/Hours}" customTextOn=" " customTextOff=" " change="handleChange"/>
 					<Text renderWhitespace="true" text="Zeiten"/>
 				</HBox>
 				<Label/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Stunden:Minuten"
-					visible="{= !${view>/BookTime/Hours}}"/>
+				<!-- Stunden -->
+				<!-- TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
+					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
+				<Input id="time1" value="{Idaur}" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
+				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
+				<TimePicker id="time2" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{Isdt}"/>
+				<!-- Uhrzeit bis -->
 				<Label text="bis" visible="{view>/BookTime/Hours}"/>
-				<TimePicker valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"/>
+				<TimePicker id="time3" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{Iedt}"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<Input value="{Ltxa1}"/>
@@ -49,5 +53,3 @@
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>
-<!-- -->
-<!--	<Text renderWhitespace="true" text="Von-bis-Zeit"/>-->
