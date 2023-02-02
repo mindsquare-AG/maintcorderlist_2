@@ -22,27 +22,27 @@
 				<!-- Stunden -->
 				<!-- TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
 					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
-				<Input id="time1" value="{Idaur}" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
+				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
 				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time2" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{Isdt}"/>
+				<TimePicker id="time2" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Isdt}"/>
 				<!-- Uhrzeit bis -->
 				<Label text="bis" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time3" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{Iedt}"/>
+				<TimePicker id="time3" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
-				<Input value="{Ltxa1}"/>
+				<Input value="{/Ltxa1}"/>
 				<!-- Endrückmeldung -->
 				<Label/>
-				<CheckBox text="{i18n>master.endR}" selected="{Leknw}"/>
+				<CheckBox text="{i18n>master.endR}" selected="{/Leknw}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{Arbpl}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}">
 					<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{Learr}">
+				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}">
 					<core:ListItem text="{generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>

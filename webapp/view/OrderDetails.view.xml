@@ -50,11 +50,8 @@
 					</f:SimpleForm>
 					<IconTabBar id="idIconTabBarInlineMode" headerMode="Inline" class="sapUiResponsiveContentPadding">
 						<items>
-<<<<<<< HEAD
-							<IconTabFilter text="{i18n>master.vorgaenge}" key="info">
-=======
+							<!--<IconTabFilter text="{i18n>master.vorgaenge}" key="info"/>-->
 							<IconTabFilter text="{i18n>master.vrge}" key="info">
->>>>>>> refs/heads/master
 								<Table noDataText="No Data" items="{NavOperationSet}" growing="true">
 									<items>
 										<ColumnListItem counter="0">

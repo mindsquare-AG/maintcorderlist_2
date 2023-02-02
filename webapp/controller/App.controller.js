@@ -37,7 +37,7 @@ sap.ui.define([
 					};
 					this.getView().byId("smartFilterBar").setFilterData(oFilterData);
 				}.bind(this),
-				function (oError) { /* handle scan error */ }
+				function (oError) { /* handle scan error */  console.log(oError) }
 			);
 		}
 

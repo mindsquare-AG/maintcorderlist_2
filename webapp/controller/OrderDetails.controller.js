@@ -131,14 +131,37 @@ sap.ui.define([
 			var oLineCtx = oEvent.getSource().getBindingContext();
 			var sAufnr = oModel.getProperty("AUFNR", oCtx);
 			var sVornr = oModel.getProperty("VORNR", oLineCtx);
-			var oLineCtx = oEvent.getSource().getBindingContext();
-			var oCtx = oModel.createEntry("/ConfirmationSet", {
-				properties: {
-					Aufnr: sAufnr,
-					Vornr: sVornr
-				}
+			var oBookTime = oLineCtx.getObject();
+			// var oContext = oModel.createEntry("/ConfirmationSet", {
+			// 	properties: {
+			// 		Aufnr: sAufnr,
+			// 		Vornr: sVornr,
+			// 		Idaur: oBookTime.Idaur,
+			// 		Isdd: oBookTime.Isdd,
+			// 		Iedd: oBookTime.Iedd,
+			// 		Ltxa1: oBookTime.Ltxa1,
+			// 		Leknw: oBookTime.Leknw,
+			// 		Arbpl: oBookTime.Arbpl,
+			// 		Werks: oBookTime.Iwerk,
+			// 		Learr: oBookTime.Learr
+			// 	}
+			// });
+
+			var data = new sap.ui.model.json.JSONModel({
+				Aufnr: sAufnr,
+				Vornr: sVornr,
+				Idaur: 0,
+				Isdd:  oBookTime.Isdd,
+				Iedd:  oBookTime.Iedd,
+				Ltxa1: oBookTime.Ltxa1,
+				Leknw: oBookTime.Leknw,
+				Arbpl: oBookTime.Arbpl,
+				Werks: oBookTime.Iwerk,
+				Learr: oBookTime.Learr
 			});
-			this._BookTimeDialog.setBindingContext(oCtx);
+
+			// this._BookTimeDialog.setBindingContext(oContext);
+			this._BookTimeDialog.setModel(data);
 			this._BookTimeDialog.open();
 		},
 
@@ -148,18 +171,18 @@ sap.ui.define([
 		},
 
 		handleChange: function (oEvent) {
-			sap.ui.getCore().byId("time1").setValue(null);
+			sap.ui.getCore().byId("time1").setValue(0);
 			sap.ui.getCore().byId("time2").setDateValue(null);
 			sap.ui.getCore().byId("time3").setDateValue(null);
 		},
 
 		onBookTimePressed: function (oEvent) {
-			  
+
 			this.getView().setBusy(true);
 
 			var oModel = this.getView().getModel();
-			var oCtx = oEvent.getSource().getBindingContext();
-			var oBookTime = oCtx.getObject();
+			// var oCtx = oEvent.getSource().getBindingContext();
+			var oBookTime = oEvent.getSource().getModel().getData();
 
 			//	var IsddDateTime = oBookTime.Isdd;
 			//	var IeddDateTime = new Date + oBookTime.Iedd;
@@ -181,7 +204,7 @@ sap.ui.define([
 			//	delete oBookTime.__metadata;
 			oModel.create('/ConfirmationSet', oBookTime, {
 				success: function (oData, result) {
-					oModel.deleteCreatedEntry(oCtx);
+					// oModel.deleteCreatedEntry(oCtx);
 					this.getView().setBusy(false);
 					MessageBox.success("Zeitrückmeldung:" + " " + Number(oData.Id) + " " +
 						"erfolgreich!", {
@@ -205,7 +228,7 @@ sap.ui.define([
 
 		onSaveButtonPressed: function () {
 			this.getView().setBusy(true);
-			  
+
 			var oModel = this.getView().getModel();
 
 			//1. zu aktualisierenden Modeleintrag auslesen
