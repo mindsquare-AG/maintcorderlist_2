@@ -20,15 +20,12 @@ sap.ui.define([
 		onInit: function () {
 
 			var oRouter = this.fnGetRouterInstance();
-
 			oRouter.getRoute("OrderDetails").attachMatched(this.fnOnDetailMatched, this);
 
 		},
 
 		fnOnDetailMatched: function (oEvent) {
-
 			var sEntityPath = "/" + oEvent.getParameter("arguments").oCtx;
-
 			this.getView().bindElement(sEntityPath);
 
 		},

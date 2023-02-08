@@ -6,15 +6,25 @@ sap.ui.define([
 	return Controller.extend("com.app.mindsquare.maintcorderlist.controller.App", {
 
 		onInit: function () {
-
+			this.onNavToDetail();
 		},
+
 		fnOnItemPressed: function (oEvent) {
 
 			var oRouter = this.fnGetRouterInstance();
 			oRouter.navTo("OrderDetails", {
 				oCtx: oEvent.getSource().getBindingContextPath().substr(1)
-
 			}); //Zugriff auf Route nicht Detail View
+		},
+
+		onNavToDetail: function () {
+			var oRouter = this.fnGetRouterInstance();
+			var startupParams = this.getOwnerComponent().getComponentData()?.startupParameters;
+			if (startupParams?.orderId) {
+				oRouter.navTo("OrderDetails", {
+					oCtx: "OrderSet('"+startupParams?.orderId+"')"
+				}); //Zugriff auf Route nicht Detail View
+			}
 		},
 
 		/* =========================================================== */
@@ -37,7 +47,9 @@ sap.ui.define([
 					};
 					this.getView().byId("smartFilterBar").setFilterData(oFilterData);
 				}.bind(this),
-				function (oError) { /* handle scan error */  console.log(oError) }
+				function (oError) { /* handle scan error */
+					console.log(oError)
+				}
 			);
 		}
 
