@@ -19,10 +19,10 @@ sap.ui.define([
 
 		onNavToDetail: function () {
 			var oRouter = this.fnGetRouterInstance();
-			var startupParams = this.getOwnerComponent().getComponentData()?.startupParameters;
-			if (startupParams?.orderId) {
+			var startupParams = this.getOwnerComponent().getComponentData().startupParameters;
+			if (startupParams.orderId) {
 				oRouter.navTo("OrderDetails", {
-					oCtx: "OrderSet('"+startupParams?.orderId+"')"
+					oCtx: "OrderSet('"+startupParams.orderId+"')"
 				}); //Zugriff auf Route nicht Detail View
 			}
 		},
