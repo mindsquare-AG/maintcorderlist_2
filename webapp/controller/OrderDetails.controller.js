@@ -148,8 +148,8 @@ sap.ui.define([
 				Aufnr: sAufnr,
 				Vornr: sVornr,
 				Idaur: 0,
-				Isdd:  oBookTime.Isdd,
-				Iedd:  oBookTime.Iedd,
+				Isdd: oBookTime.Isdd,
+				Iedd: oBookTime.Iedd,
 				Ltxa1: oBookTime.Ltxa1,
 				Leknw: oBookTime.Leknw,
 				Arbpl: oBookTime.Arbpl,
@@ -225,9 +225,7 @@ sap.ui.define([
 
 		onSaveButtonPressed: function () {
 			this.getView().setBusy(true);
-
 			var oModel = this.getView().getModel();
-
 			//1. zu aktualisierenden Modeleintrag auslesen
 			var oEntry = this.getView().getBindingContext();
 			var oData = oEntry.getObject();
@@ -236,15 +234,32 @@ sap.ui.define([
 			/*var sUpdatePath = this.getView().getModel().createKey("/MaintenanceNotificationSet", {
 				Id: oEntry.Id
 			});*/
+		
 			// var sUpdatePath = "/" + this.getView().getModel().getParameter("arguments").oCtx;
 
 			//3. Update-Request versenden
+			var that = this;
 			this.getView().getModel().update(oEntry.getPath(), oData, {
 				success: function () {
-					var oRouter = this.fnGetRouterInstance();
-					this.getView().setBusy(false);
-					oRouter.navTo("RouteApp");
-					MessageToast.show("Aktualisierung erfolgreich");
+					oModel.callFunction("/CloseOrder", {
+						method: "POST",
+						urlParameters: {
+							"AUFNR": oData.AUFNR,
+							"UNAME": oData.UNAME,
+							"VORNR": ""
+						},
+						success: function () {
+							var oRouter = that.fnGetRouterInstance();
+							that.getView().setBusy(false);
+							oRouter.navTo("RouteApp");
+							MessageToast.show("Aktualisierung erfolgreich");
+						},
+						error: function (oError) {
+							that.getView().setBusy(false);
+							MessageToast.show("Es ist ein Fehler ist aufgetreten!");
+						}
+					});
+
 				}.bind(this),
 				error: function (oError) {
 					this.getView().setBusy(false);
