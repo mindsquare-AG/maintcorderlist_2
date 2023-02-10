@@ -34,7 +34,7 @@
 				<Input value="{/Ltxa1}"/>
 				<!-- Endrückmeldung -->
 				<Label/>
-				<CheckBox text="{i18n>master.endR}" selected="{/Leknw}"/>
+				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
 				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}">
