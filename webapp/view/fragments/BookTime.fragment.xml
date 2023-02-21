@@ -22,13 +22,13 @@
 				<!-- Stunden -->
 				<!-- TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
 					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
-				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
+				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}" change="onIdaurChange"/>
 				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time2" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Isdt}"/>
+				<TimePicker id="time2"  displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"  value="{/Isdt}" change="onIsdtChange"/>
 				<!-- Uhrzeit bis -->
 				<Label text="bis" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time3" valueFormat="HH:mm" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}"/>
+				<TimePicker id="time3"  displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}" change="onIedtChange"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<Input value="{/Ltxa1}"/>
@@ -37,19 +37,19 @@
 				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}">
-					<core:ListItem text="{generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
+				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange">
+					<core:ListItem  text="({generalServices>Vaplz}) {generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}">
-					<core:ListItem text="{generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
+				<Select id="selectLearr" forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}" change="onLearrChange">
+					<core:ListItem text="({generalServices>Lstar}) {generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>
 		</f:SimpleForm>
 		<buttons>
-			<Button text="Abbrechen" press="onBookTimeClose"/>
-			<Button type="Emphasized" text="{i18n>master.bookTime}" press="onBookTimePressed"/>
+			<Button text="Abbrechen" press="onBookTimeClose" id="btnBookTimeClose"/>
+			<Button type="Emphasized" text="{i18n>master.bookTime}" press="onBookTimePressed" id="btnBookTimeConfirm"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

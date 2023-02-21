@@ -32,7 +32,7 @@
 							</smartFilterBar:SmartFilterBar>
 							<smartTable:SmartTable id="LineItemsSmartTable" header="{i18n>master.order}" entitySet="OrderSet" smartFilterId="smartFilterBar"
 								tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true"
-								enableAutoColumnWidth="true" showRowCount="true" enableAutoBinding="true" persistencyKey="SmartTableAnalytical_Explored"
+								enableAutoColumnWidth="true" showRowCount="true" enableAutoBinding="false" persistencyKey="SmartTableAnalytical_Explored"
 								initiallyVisibleFields="AUFNR,AUART,AUFTXT,Status,Tplnr,Equnr,Vaplz,START_DATE,END_DATE,Warpl,Wapos,Plnnr,Plnal,Ila,Betriebsbereich,Standort,Plgrp,Ruecknr">
 								<Table>
 									<items>

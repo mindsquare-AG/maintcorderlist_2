@@ -1,6 +1,5 @@
 sap.ui.define([
 	"com/app/mindsquare/maintcorderlist/controller/Basecontroller",
-	//	"com/app/mindsquare/maintcorderlist/model/formatter",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/m/Dialog",
@@ -16,7 +15,6 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("com.app.mindsquare.maintcorderlist.controller.OrderDetails", {
-		//	formatter: formatter,
 		onInit: function () {
 
 			var oRouter = this.fnGetRouterInstance();
@@ -59,10 +57,19 @@ sap.ui.define([
 						})
 					});
 				}
-
 				this.oApproveDialog.open();
 			} else {
-
+				try {
+					var startupParams = this.getOwnerComponent().getComponentData().startupParameters;
+					if (startupParams.orderId) {
+						var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+						oCrossAppNavigator.backToPreviousApp();
+						return;
+					}
+				} catch (e) {
+					this.getOwnerComponent().getRouter().navTo("RouteApp", {}, true);
+					return;
+				}
 				this.getOwnerComponent().getRouter().navTo("RouteApp", {}, true);
 			}
 
@@ -147,7 +154,7 @@ sap.ui.define([
 			var data = new sap.ui.model.json.JSONModel({
 				Aufnr: sAufnr,
 				Vornr: sVornr,
-				Idaur: 0,
+				Idaur: "0",
 				Isdd: oBookTime.Isdd,
 				Iedd: oBookTime.Iedd,
 				Ltxa1: oBookTime.Ltxa1,
@@ -173,9 +180,64 @@ sap.ui.define([
 			sap.ui.getCore().byId("time3").setDateValue(null);
 		},
 
-		onBookTimePressed: function (oEvent) {
+		fnHelperIsEmpty: function (value) {
+			if (value === "" || value === undefined || value === null) {
+				return true;
+			}
+			return false;
+		},
 
-			this.getView().setBusy(true);
+		fnBookTimeValidate: function (data) {
+			var bCheck = true;
+			if (this.getView().getModel("view").getContext("/BookTime/Hours").getObject()) {
+				if (this.fnHelperIsEmpty(data.Isdt)) {
+					bCheck = false;
+					sap.ui.getCore().byId("time2").setValueState("Error");
+				}
+				if (this.fnHelperIsEmpty(data.Iedt)) {
+					bCheck = false;
+					sap.ui.getCore().byId("time3").setValueState("Error");
+				}
+			} else {
+				if (this.fnHelperIsEmpty(data.Idaur) || data.Idaur <= 0) {
+					bCheck = false;
+					sap.ui.getCore().byId("time1").setValueState("Error");
+				}
+			}
+
+			if (this.fnHelperIsEmpty(data.Arbpl)) {
+				bCheck = false;
+				sap.ui.getCore().byId("selectArbpl").setValueState("Error");
+			}
+
+			if (this.fnHelperIsEmpty(data.Learr)) {
+				bCheck = false;
+				sap.ui.getCore().byId("selectLearr").setValueState("Error");
+			}
+			return bCheck;
+		},
+
+		onIdaurChange: function (oEvent) {
+			sap.ui.getCore().byId("time1").setValueState("None");
+		},
+
+		onIsdtChange: function (oEvent) {
+			sap.ui.getCore().byId("time2").setValueState("None");
+		},
+
+		onIedtChange: function (oEvent) {
+			sap.ui.getCore().byId("time3").setValueState("None");
+		},
+
+		onArbplChange: function (oEvent) {
+			sap.ui.getCore().byId("selectArbpl").setValueState("None");
+		},
+
+		onLearrChange: function (oEvent) {
+			sap.ui.getCore().byId("selectLearr").setValueState("None");
+		},
+
+		onBookTimePressed: function (oEvent) {
 
 			var oModel = this.getView().getModel();
 			// var oCtx = oEvent.getSource().getBindingContext();
@@ -184,37 +246,35 @@ sap.ui.define([
 			//	var IsddDateTime = oBookTime.Isdd;
 			//	var IeddDateTime = new Date + oBookTime.Iedd;
 
-			var oConf = {
-				Aufnr: oBookTime.AUFNR,
-				Vornr: oBookTime.VORNR,
-				Idaur: oBookTime.Idaur,
-				Isdd: oBookTime.Isdd,
-				Iedd: oBookTime.Iedd,
-				Ltxa1: oBookTime.Ltxa1,
-				Leknw: oBookTime.Leknw,
-				Arbpl: oBookTime.Arbpl,
-				Werks: oBookTime.Iwerk,
-				Learr: oBookTime.Learr
-			};
+			if (!this.fnBookTimeValidate(oBookTime)) {
+				return;
+			}
+			// Convert time to sap format
+			try {
+				oBookTime.Isdt = oBookTime.Isdt.replaceAll(":", "");
+				oBookTime.Iedt = oBookTime.Iedt.replaceAll(":", "");
+			} catch (e) {
+				
+			}
+
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
 			//	delete oBookTime.__metadata;
-			oModel.create('/ConfirmationSet', oBookTime, {
+			this.getView().setBusy(true);
+			oModel.create("/ConfirmationSet", oBookTime, {
 				success: function (oData, result) {
 					// oModel.deleteCreatedEntry(oCtx);
 					this.getView().setBusy(false);
-					MessageBox.success("Zeitrückmeldung:" + " " + Number(oData.Id) + " " +
-						"erfolgreich!", {
-							onClose: function () {
-								this._BookTimeDialog.close();
-							}.bind(this),
-							title: "Erfolg"
-						});
+					MessageBox.success("Zeitrückmeldung erfolgreich!", {
+						onClose: function () {
+							this._BookTimeDialog.close();
+						}.bind(this),
+						title: "Erfolg"
+					});
 
 				}.bind(this),
-				error: function () {
+				error: function (e) {
 					this.getView().setBusy(false);
-
 					MessageBox.alert("Es ist ein Fehler aufgetreten.");
 				}.bind(this)
 			});
@@ -234,38 +294,41 @@ sap.ui.define([
 			/*var sUpdatePath = this.getView().getModel().createKey("/MaintenanceNotificationSet", {
 				Id: oEntry.Id
 			});*/
-		
+			var that = this;
 			// var sUpdatePath = "/" + this.getView().getModel().getParameter("arguments").oCtx;
+			oModel.callFunction("/CloseOrder", {
+				method: "POST",
+				urlParameters: {
+					"AUFNR": oData.AUFNR,
+					"UNAME": oData.UNAME,
+					"VORNR": ""
+				},
+				success: function () {
+					var oRouter = that.fnGetRouterInstance();
+					that.getView().setBusy(false);
+					oRouter.navTo("RouteApp");
+					MessageToast.show("Erfolgreich beendet!");
+				},
+				error: function (oError) {
+					that.getView().setBusy(false);
+					MessageToast.show("Es ist ein Fehler ist aufgetreten!");
+				}
+			});
 
 			//3. Update-Request versenden
-			var that = this;
-			this.getView().getModel().update(oEntry.getPath(), oData, {
-				success: function () {
-					oModel.callFunction("/CloseOrder", {
-						method: "POST",
-						urlParameters: {
-							"AUFNR": oData.AUFNR,
-							"UNAME": oData.UNAME,
-							"VORNR": ""
-						},
-						success: function () {
-							var oRouter = that.fnGetRouterInstance();
-							that.getView().setBusy(false);
-							oRouter.navTo("RouteApp");
-							MessageToast.show("Aktualisierung erfolgreich");
-						},
-						error: function (oError) {
-							that.getView().setBusy(false);
-							MessageToast.show("Es ist ein Fehler ist aufgetreten!");
-						}
-					});
-
-				}.bind(this),
-				error: function (oError) {
-					this.getView().setBusy(false);
-					MessageToast.show("Es ist ein Fehler ist aufgetreten!");
-				}.bind(this)
-			});
+			// var that = this;
+			// this.getView().getModel().update(oEntry.getPath(), oData, {
+			// 	success: function () {
+			// 		var oRouter = that.fnGetRouterInstance();
+			// 		that.getView().setBusy(false);
+			// 		oRouter.navTo("RouteApp");
+			// 		MessageToast.show("Aktualisierung erfolgreich");
+			// 	}.bind(this),
+			// 	error: function (oError) {
+			// 		this.getView().setBusy(false);
+			// 		MessageToast.show("Es ist ein Fehler ist aufgetreten!");
+			// 	}.bind(this)
+			// });
 		}
 	});
 

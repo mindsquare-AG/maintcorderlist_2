@@ -1,10 +1,9 @@
 sap.ui.define([
 	"com/app/mindsquare/maintcorderlist/controller/Basecontroller"
-], function (Controller) {
+], function (Controller, formatter) {
 	"use strict";
 
 	return Controller.extend("com.app.mindsquare.maintcorderlist.controller.App", {
-
 		onInit: function () {
 			this.onNavToDetail();
 		},
@@ -26,10 +25,9 @@ sap.ui.define([
 						oCtx: "OrderSet('" + startupParams.orderId + "')"
 					}); //Zugriff auf Route nicht Detail View
 				}
-			}catch(e){
-				
-			}
+			} catch (e) {
 
+			}
 		},
 
 		/* =========================================================== */
