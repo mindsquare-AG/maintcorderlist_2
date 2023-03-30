@@ -29,7 +29,7 @@ sap.ui.define([
 		},
 
 		fnNavBack: function (oEvent) {
-
+			debugger;
 			if (this.getView().getModel().hasPendingChanges()) {
 				if (!this.oApproveDialog) {
 					this.oApproveDialog = new Dialog({
@@ -63,6 +63,7 @@ sap.ui.define([
 					var startupParams = this.getOwnerComponent().getComponentData().startupParameters;
 					if (startupParams.orderId) {
 						var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+						oCrossAppNavigator.backToPreviousApp();
 						oCrossAppNavigator.backToPreviousApp();
 						return;
 					}
@@ -163,10 +164,31 @@ sap.ui.define([
 				Werks: oBookTime.Iwerk,
 				Learr: oBookTime.Learr
 			});
+			var that = this;
+
+			sap.ui.getCore().byId("selectArbpl").getBinding("items").attachEvent("dataReceived", function () {
+				that.fnonDataRecieved(that)
+			});
 
 			// this._BookTimeDialog.setBindingContext(oContext);
 			this._BookTimeDialog.setModel(data);
 			this._BookTimeDialog.open();
+			this.fnonDataRecieved(that)
+		},
+
+		fnonDataRecieved: function (that) {
+			try {
+				var newData = that._BookTimeDialog.getModel().getData();
+				var items = sap.ui.getCore().byId("selectArbpl").getItems();
+				var selectedItem = items.find((item) => {
+					return item.getBindingContext("generalServices").getObject().Selected === true;
+				});
+				newData.Arbpl = selectedItem.getBindingContext("generalServices").getObject().Vaplz
+				that._BookTimeDialog.getModel().setData(newData);
+				return newData.Arbpl;
+			} catch (e) {
+				return "";
+			}
 		},
 
 		onBookTimeClose: function (oEvent) {
@@ -254,9 +276,8 @@ sap.ui.define([
 				oBookTime.Isdt = oBookTime.Isdt.replaceAll(":", "");
 				oBookTime.Iedt = oBookTime.Iedt.replaceAll(":", "");
 			} catch (e) {
-				
-			}
 
+			}
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
 			//	delete oBookTime.__metadata;

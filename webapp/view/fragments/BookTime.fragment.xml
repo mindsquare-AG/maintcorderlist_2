@@ -37,7 +37,7 @@
 				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange">
+				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange" >
 					<core:ListItem  text="({generalServices>Vaplz}) {generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
