@@ -22,6 +22,9 @@
 				<!-- Stunden -->
 				<!-- TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
 					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
+				<!--Alban Change Add field description -->
+				<Label text="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
+				<!--Alban Change Add field description -->
 				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}" change="onIdaurChange"/>
 				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
@@ -31,7 +34,10 @@
 				<TimePicker id="time3"  displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}" change="onIedtChange"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
-				<Input value="{/Ltxa1}"/>
+				<!--Alban Change change binding to long text -->
+				<!--<Input value="{/Ltxa1}"/>-->
+				<Input value="{/Longtext}"/>
+				<!--Alban Change change binding to long text -->
 				<!-- Endrückmeldung -->
 				<Label/>
 				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
