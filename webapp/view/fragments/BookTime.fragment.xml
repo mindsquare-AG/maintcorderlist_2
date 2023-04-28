@@ -23,7 +23,7 @@
 				<!-- TimePicker id="time1" valueFormat="HH:mm" displayFormat="HH:mm" change="handleChange1" placeholder="Stunden:Minuten"
 					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
 				<!--Alban Change Add field description -->
-				<Label text="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"/>
+				<Label text="Dauer in Stunden" visible="{= !${view>/BookTime/Hours}}"/>
 				<!--Alban Change Add field description -->
 				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}" change="onIdaurChange"/>
 				<!-- Uhrzeit von -->
@@ -43,12 +43,12 @@
 				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange" >
+				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange" growingThreshold="200">
 					<core:ListItem  text="({generalServices>Vaplz}) {generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select id="selectLearr" forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}" change="onLearrChange">
+				<Select id="selectLearr" forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}" change="onLearrChange" growingThreshold="200">
 					<core:ListItem text="({generalServices>Lstar}) {generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
 				</Select>
 			</f:content>
