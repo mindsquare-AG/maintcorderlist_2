@@ -155,7 +155,10 @@ sap.ui.define([
 			var data = new sap.ui.model.json.JSONModel({
 				Aufnr: sAufnr,
 				Vornr: sVornr,
-				Idaur: "0",
+				//Alban Change
+				// Idaur: "0",
+				IdaurFull: "0",
+				//Alban Change
 				Isdd: oBookTime.Isdd,
 				Iedd: oBookTime.Iedd,
 				Ltxa1: oBookTime.Ltxa1,
@@ -221,7 +224,10 @@ sap.ui.define([
 					sap.ui.getCore().byId("time3").setValueState("Error");
 				}
 			} else {
-				if (this.fnHelperIsEmpty(data.Idaur) || data.Idaur <= 0) {
+				//Alban Change
+				// if (this.fnHelperIsEmpty(data.Idaur) || data.Idaur <= 0) {
+				if (this.fnHelperIsEmpty(data.IdaurFull) || data.IdaurFull <= 0) {
+					//Alban Change 
 					bCheck = false;
 					sap.ui.getCore().byId("time1").setValueState("Error");
 				}
@@ -278,6 +284,8 @@ sap.ui.define([
 			} catch (e) {
 
 			}
+			
+			oBookTime.IdaurFull = oBookTime.IdaurFull.replace(',', '.');
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
 			//	delete oBookTime.__metadata;

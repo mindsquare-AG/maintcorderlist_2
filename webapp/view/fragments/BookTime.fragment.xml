@@ -24,14 +24,16 @@
 					visible="{= !${view>/BookTime/Hours}}" value="{Idaur}"/ -->
 				<!--Alban Change Add field description -->
 				<Label text="Dauer in Stunden" visible="{= !${view>/BookTime/Hours}}"/>
+				<Input id="time1" value="{/IdaurFull}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}"
+					change="onIdaurChange"/>
+				<!--<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}" change="onIdaurChange"/>-->
 				<!--Alban Change Add field description -->
-				<Input id="time1" value="{/Idaur}" valueLiveUpdate="true" placeholder="Dauer in Minuten" visible="{= !${view>/BookTime/Hours}}" change="onIdaurChange"/>
 				<!-- Uhrzeit von -->
 				<Label text="von" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time2"  displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}"  value="{/Isdt}" change="onIsdtChange"/>
+				<TimePicker id="time2" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Isdt}" change="onIsdtChange"/>
 				<!-- Uhrzeit bis -->
 				<Label text="bis" visible="{view>/BookTime/Hours}"/>
-				<TimePicker id="time3"  displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}" change="onIedtChange"/>
+				<TimePicker id="time3" displayFormat="HH:mm" placeholder="Uhrzeit" visible="{view>/BookTime/Hours}" value="{/Iedt}" change="onIedtChange"/>
 				<!-- Rückmeldetext -->
 				<Label text="{i18n>master.rText}"/>
 				<!--Alban Change change binding to long text -->
@@ -43,14 +45,20 @@
 				<CheckBox text="{i18n>master.endR}" selected="{/FinConf}"/>
 				<!-- Arbeitsplatz -->
 				<Label text="{i18n>master.arbpl}"/>
-				<Select id="selectArbpl" forceSelection="false" items="{ path: 'generalServices>/ResponsibleWorkCenterSet'}" selectedKey="{/Arbpl}" change="onArbplChange" growingThreshold="200">
-					<core:ListItem  text="({generalServices>Vaplz}) {generalServices>Vatxt}" additionalText="{generalServices>Vaplz}" key="{generalServices>Vaplz}"/>
+				<!--Alban Change added a length of 1000 items to the select for both elements -->
+				<Select id="selectArbpl" forceSelection="false" maxLength="1000"
+					items="{ path: 'generalServices>/ResponsibleWorkCenterSet', length : '1000'}" selectedKey="{/Arbpl}" change="onArbplChange">
+					<core:ListItem text="({generalServices>Vaplz}) {generalServices>Vatxt}" additionalText="{generalServices>Vaplz}"
+						key="{generalServices>Vaplz}"/>
 				</Select>
 				<!-- Leistungsart -->
 				<Label text="{i18n>master.lArt}"/>
-				<Select id="selectLearr" forceSelection="false" items="{ path: 'generalServices>/ActivityTypeSet'}" selectedKey="{/Learr}" change="onLearrChange" growingThreshold="200">
-					<core:ListItem text="({generalServices>Lstar}) {generalServices>LstarText}" additionalText="{generalServices>Lstar}" key="{generalServices>Lstar}"/>
+				<Select id="selectLearr" forceSelection="false" maxLength="1000" items="{ path: 'generalServices>/ActivityTypeSet', length : '1000'}"
+					selectedKey="{/Learr}" change="onLearrChange">
+					<core:ListItem text="({generalServices>Lstar}) {generalServices>LstarText}" additionalText="{generalServices>Lstar}"
+						key="{generalServices>Lstar}"/>
 				</Select>
+				<!--Alban Change Alban Change added a length of 1000 items to the select for both elements -->
 			</f:content>
 		</f:SimpleForm>
 		<buttons>
