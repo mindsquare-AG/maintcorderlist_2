@@ -9,9 +9,10 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/m/MessageBox",
 	"sap/m/Text",
-	"sap/ui/core/routing/History"
+	"sap/ui/core/routing/History",
+	"sap/ui/model/json/JSONModel"
 ], function (Controller, Filter, FilterOperator, Dialog, DialogType, Button, ButtonType, MessageToast, MessageBox, Text,
-	History) {
+	History, JSONModel) {
 	"use strict";
 
 	return Controller.extend("com.app.mindsquare.maintcorderlist.controller.OrderDetails", {
@@ -259,6 +260,24 @@ sap.ui.define([
 
 		onArbplChange: function (oEvent) {
 			sap.ui.getCore().byId("selectArbpl").setValueState("None");
+
+			//Alban Change 8/21/2023 call backend service to filter leistungsart
+			var oObjId = oEvent.getParameters().selectedItem.getAdditionalText();
+			var aFilter = [];
+			var sPath = "/ActivityTypeSet";
+			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId));
+
+			this.getView().getModel("generalServices").read(sPath, {
+				filters: [aFilter],
+				success: function (oData) {
+					var oModel = new JSONModel(oData.results);
+					this.getView().setModel(oModel, "learrItemNew");
+				}.bind(this),
+				error: function (oError) {
+
+				}.bind(this)
+			});
+			//Alban Change 8/21/2023 call backend service to filter leistungsart
 		},
 
 		onLearrChange: function (oEvent) {
@@ -284,7 +303,7 @@ sap.ui.define([
 			} catch (e) {
 
 			}
-			
+
 			oBookTime.IdaurFull = oBookTime.IdaurFull.replace(',', '.');
 
 			// If not deleted this will cause an backend error - therefore we first delete the __metadata property
