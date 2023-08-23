@@ -265,7 +265,7 @@ sap.ui.define([
 			var oObjId = oEvent.getParameters().selectedItem.getAdditionalText();
 			var aFilter = [];
 			var sPath = "/ActivityTypeSet";
-			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId));
+			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId)); 
 
 			this.getView().getModel("generalServices").read(sPath, {
 				filters: [aFilter],
