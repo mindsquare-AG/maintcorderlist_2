@@ -12,7 +12,7 @@ sap.ui.define([
 
 			var oRouter = this.fnGetRouterInstance();  
 			oRouter.navTo("OrderDetails", {
-				oCtx: oEvent.getSource().getBindingContextPath().substr(1) 
+				oCtx: oEvent.getSource().getBindingContextPath().substr(1)  
 			}); //Zugriff auf Route nicht Detail View
 		},
 
