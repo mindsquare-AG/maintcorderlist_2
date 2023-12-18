@@ -178,6 +178,13 @@ sap.ui.define([
 			this._BookTimeDialog.setModel(data);
 			this._BookTimeDialog.open();
 			this.fnonDataRecieved(that)
+
+			sap.ui.getCore().byId("selectArbpl").setSelectedKey(oBookTime.Vaplz);
+
+			setTimeout(function () {
+				this.setSelectedLeistungart(oBookTime.Lstar);
+			}.bind(this), 1000);
+
 		},
 
 		fnonDataRecieved: function (that) {
@@ -258,6 +265,27 @@ sap.ui.define([
 			sap.ui.getCore().byId("time3").setValueState("None");
 		},
 
+		//Alban Change 12/18/2023 call backend service to set selected leistungart
+		setSelectedLeistungart: function (iLstar) {
+			var oObjId = sap.ui.getCore().byId("selectArbpl").getSelectedItem().getAdditionalText()
+			var aFilter = [];
+			var sPath = "/ActivityTypeSet";
+			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId));
+
+			this.getView().getModel("generalServices").read(sPath, {
+				filters: [aFilter],
+				success: function (oData) {
+					var oModel = new JSONModel(oData.results);
+					this.getView().setModel(oModel, "learrItemNew");
+					sap.ui.getCore().byId("selectLearr").setSelectedKey(iLstar);
+				}.bind(this),
+				error: function (oError) {
+
+				}.bind(this)
+			});
+		},
+		//Alban Change 12/18/2023 call backend service to set selected leistungart
+
 		onArbplChange: function (oEvent) {
 			sap.ui.getCore().byId("selectArbpl").setValueState("None");
 
@@ -265,7 +293,7 @@ sap.ui.define([
 			var oObjId = oEvent.getParameters().selectedItem.getAdditionalText();
 			var aFilter = [];
 			var sPath = "/ActivityTypeSet";
-			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId)); 
+			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId));
 
 			this.getView().getModel("generalServices").read(sPath, {
 				filters: [aFilter],

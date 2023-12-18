@@ -60,7 +60,7 @@
 				<!--		key="{generalServices>Lstar}"/>-->
 				<!--</Select>-->
 				<Select id="selectLearr" forceSelection="false" maxLength="1000" items="{ path: 'learrItemNew>/', length : '1000'}"
-					selectedKey="{/Learr}" change="onLearrChange">
+					selectedKey="{/Lstar}" change="onLearrChange">
 					<core:ListItem text="({learrItemNew>Lstar}) {learrItemNew>LstarText}" additionalText="{learrItemNew>ObjId}"
 						key="{learrItemNew>Lstar}"/>
 				</Select>
