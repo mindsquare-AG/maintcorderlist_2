@@ -183,7 +183,7 @@ sap.ui.define([
 
 			setTimeout(function () {
 				this.setSelectedLeistungart(oBookTime.Lstar);
-			}.bind(this), 1000);
+			}.bind(this), 1500);
 
 		},
 
@@ -267,7 +267,7 @@ sap.ui.define([
 
 		//Alban Change 12/18/2023 call backend service to set selected leistungart
 		setSelectedLeistungart: function (iLstar) {
-			var oObjId = sap.ui.getCore().byId("selectArbpl").getSelectedItem().getAdditionalText()
+			var oObjId = sap.ui.getCore().byId("selectArbpl").getSelectedItem().getAdditionalText();
 			var aFilter = [];
 			var sPath = "/ActivityTypeSet";
 			aFilter.push(new Filter('ObjId', FilterOperator.EQ, oObjId));

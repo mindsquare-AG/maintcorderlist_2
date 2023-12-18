@@ -59,10 +59,9 @@
 				<!--	<core:ListItem text="({generalServices>Lstar}) {generalServices>LstarText}" additionalText="{generalServices>Lstar}"-->
 				<!--		key="{generalServices>Lstar}"/>-->
 				<!--</Select>-->
-				<Select id="selectLearr" forceSelection="false" maxLength="1000" items="{ path: 'learrItemNew>/', length : '1000'}"
-					selectedKey="{/Lstar}" change="onLearrChange">
-					<core:ListItem text="({learrItemNew>Lstar}) {learrItemNew>LstarText}" additionalText="{learrItemNew>ObjId}"
-						key="{learrItemNew>Lstar}"/>
+				<Select id="selectLearr" forceSelection="false" maxLength="1000" items="{ path: 'learrItemNew>/', length : '1000'}" selectedKey="{/Lstar}"
+					change="onLearrChange">
+					<core:ListItem text="({learrItemNew>Lstar}) {learrItemNew>LstarText}" additionalText="{learrItemNew>ObjId}" key="{learrItemNew>Lstar}"/>
 				</Select>
 				<!--Alban Change New Binding -->
 				<!--Alban Change Alban Change added a length of 1000 items to the select for both elements -->
