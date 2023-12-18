@@ -38,7 +38,7 @@
 				<Label text="{i18n>master.rText}"/>
 				<!--Alban Change change binding to long text -->
 				<!--<Input value="{/Ltxa1}"/>-->
-				<Input value="{/Longtext}"/>
+				<Input value="{/Longtext}"/> 
 				<!--Alban Change change binding to long text -->
 				<!-- Endrückmeldung -->
 				<Label/>
