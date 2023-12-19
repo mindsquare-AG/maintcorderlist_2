@@ -7,7 +7,7 @@ sap.ui.define([
 	"sap/m/Button",
 	"sap/m/ButtonType",
 	"sap/m/MessageToast",
-	"sap/m/MessageBox",
+	"sap/m/MessageBox", 
 	"sap/m/Text",
 	"sap/ui/core/routing/History",
 	"sap/ui/model/json/JSONModel"
